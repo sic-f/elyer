@@ -1,0 +1,22 @@
+%section.hero.is-primary
+  .hero-body
+    .container
+      %h1.title Pagikan
+      %h2.subtitle Gikan sa out of town!
+%nav.navbar.is-spaced.is-fixed-bottom{ role: 'navigation', 'aria-label': 'main navigation' }
+  .navbar-brand
+    %a.navbar-item{ href: '/' }
+      %img{ :src => "https://picsum.photos/200" }
+    %a.navbar-burger.burger{ role: 'button', 'aria-label': 'menu', 'aria-expanded': 'false', data: { target: 'navBar' } }
+      %span{ 'aria-hidden': 'true' }
+      %span{ 'aria-hidden': 'true' }
+      %span{ 'aria-hidden': 'true' }
+  .navbar-menu#navBar
+    .navbar-start
+      %a.navbar-item Home
+    .navbar-end
+      .navbar-item
+        %span.icon
+          %i.fas.fa-map-pin
+        = link_to 'Add', 'javascript:void(0)'
+      %a.navbar-item Sign out
