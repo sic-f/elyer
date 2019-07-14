@@ -7,5 +7,9 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = yield
+    %script{ src: 'https://kit.fontawesome.com/f89a405bc5.js' }
+  %body.has-navbar-fixed-bottom
+    = render 'layouts/hero'
+    %section.elyer-body
+      = render 'layouts/menu'
+      = yield
