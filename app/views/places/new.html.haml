@@ -1,0 +1,59 @@
+%section.section
+  .container
+    = form_with model: @place, id: :new_place, local: true do |form|
+      .field.is-horizontal
+        .field-label
+          = form.label :name, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_field :name, placeholder: 'Name of the place', class: 'input', autocomplete: 'off'
+
+      .field.is-horizontal
+        .field-label
+          = form.label :description, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_area :description, placeholder: 'Describe the place', class: 'textarea'
+            %p.help.is-info Tips, best thing about this place, bad reviews, etc.
+
+      .field.is-horizontal
+        .field-label
+          = form.label :address, 'Location', class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_field :address, placeholder: 'Location of the place', class: 'input'
+
+      .field.is-horizontal
+        .field-label
+          = form.label :mobile, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.phone_field :mobile, placeholder: 'Mobile number', class: 'input'
+            %p.help.is-info Separate numbers with commas (,)
+
+      .field.is-horizontal
+        .field-label
+          = form.label :landline, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.telephone_field :landline, placeholder: 'Landline number', class: 'input'
+            %p.help.is-info Separate numbers with commas (,)
+
+      .field.is-horizontal
+        .field-label
+          = form.label :email, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.email_field :email, placeholder: 'Email', class: 'input'
+
+      .field.is-horizontal.is-grouped.is-grouped-right
+        .control
+          = form.button 'Go Back to Home', class: 'button is-info'
+        .control
+          = form.submit :Submit, class: 'button is-primary'
