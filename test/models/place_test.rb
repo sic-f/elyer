@@ -30,4 +30,10 @@ class PlaceTest < ActiveSupport::TestCase
 
     assert_equal place.respond_to?(:address), true
   end
+
+  test 'place responds to email' do
+    place = build :place
+
+    assert_equal place.respond_to?(:email), true
+  end
 end
