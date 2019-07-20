@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  resources :places, only: [:new, :create, :show]
+  resources :places, only: [:new, :create, :show, :edit]
 end
