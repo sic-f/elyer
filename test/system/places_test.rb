@@ -28,7 +28,7 @@ class PlacesTest < ApplicationSystemTestCase
     end
 
     assert_selector 'div.notification.is-success', text: 'Successfully submitted place!'
-    assert_selector 'h2.name', text: 'Sabang Beach'
+    assert_selector 'h1.title', text: 'Sabang Beach'
   end
 
   test 'create a place with invalid fields' do
@@ -62,7 +62,7 @@ class PlacesTest < ApplicationSystemTestCase
 
     click_button 'Submit'
 
-    assert_selector 'h2.name', text: 'Aliya Surf Resort'
+    assert_selector 'h1.title', text: 'Aliya Surf Resort'
     assert_selector 'div.notification.is-success', text: 'Update success!'
   end
 
