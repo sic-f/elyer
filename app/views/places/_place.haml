@@ -1,10 +1,15 @@
 %article.card
+  %header.card-header
+    = link_to 'javascript:void(0)', class: 'card-header-icon',
+      'aria-label' => 'more-options' do
+      %span.icon
+        %i.fas.fa-angle-down{ 'aria-hidden': true }
   .card-image
     %figure.image
       = image_tag 'https://picsum.photos/600'
   .card-content
     %h1.title #{place.name}
-    %h2.subtitle #{place.description}
+    %h2.subtitle Location: #{place.address}
 
     .content
-      Location: #{place.address}
+      #{place.description}
