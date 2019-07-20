@@ -1,7 +1,7 @@
 %article{ class: place_layout_class }
   %article.card
-    %header.card-header.is-centered
-      %p.card-header-title.has-text-info.is-unselectable #{place.name}
+    %header.card-header
+      = link_to place.name, place, class: 'card-header-title has-text-info'
       = link_to edit_place_path(place), class: 'card-header-icon',
         'aria-label' => 'more-options' do
         %span.icon
