@@ -24,4 +24,10 @@ class PlaceTest < ActiveSupport::TestCase
 
     assert_equal place.respond_to?(:name), true
   end
+
+  test 'place responds to address' do
+    place = build :place
+
+    assert_equal place.respond_to?(:address), true
+  end
 end
