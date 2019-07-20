@@ -1,15 +1,17 @@
 %article.card
-  %header.card-header
-    = link_to 'javascript:void(0)', class: 'card-header-icon',
+  %header.card-header.is-centered
+    %p.card-header-title.has-text-info.is-unselectable #{place.name}
+    = link_to edit_place_path(place), class: 'card-header-icon',
       'aria-label' => 'more-options' do
       %span.icon
-        %i.fas.fa-angle-down{ 'aria-hidden': true }
+        %i.fas.fa-edit{ 'aria-hidden': true }
+      EDIT
   .card-image
     %figure.image
       = image_tag 'https://picsum.photos/600'
   .card-content
-    %h1.title #{place.name}
-    %h2.subtitle Location: #{place.address}
+    %h1.title.has-text-grey-light #{place.name}
+    %h2.subtitle #{place.address}
 
     .content
       #{place.description}
