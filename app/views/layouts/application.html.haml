@@ -10,8 +10,7 @@
     %script{ src: 'https://kit.fontawesome.com/f89a405bc5.js' }
   %body.has-navbar-fixed-bottom
     - flash.each do |message_type, message|
-      = content_tag :div, class: "notification is-#{message_type}" do
-        = content_tag :button, nil, class: 'delete'
+      = content_tag :div, class: "notification is-#{message_type} has-text-centered" do
         = message
     = render 'layouts/hero'
     = render 'layouts/navbar'
