@@ -8,6 +8,8 @@
           .field
             .control
               = form.text_field :name, placeholder: 'Name of the place', class: 'input', autocomplete: 'off'
+            - if @place.errors.messages[:name].present?
+              %p.help.is-danger A name is needed.
 
       .field.is-horizontal
         .field-label
@@ -25,6 +27,8 @@
           .field
             .control
               = form.text_field :address, placeholder: 'Location of the place', class: 'input'
+            - if @place.errors.messages[:address].present?
+              %p.help.is-danger You need to provide an address or location.
 
       .field.is-horizontal
         .field-label
