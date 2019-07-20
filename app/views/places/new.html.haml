@@ -54,6 +54,6 @@
 
       .field.is-horizontal.is-grouped.is-grouped-right
         .control
-          = form.button 'Go Back to Home', class: 'button is-info'
+          = link_to 'Go Back to Home', root_path, class: 'button is-info'
         .control
           = form.submit :Submit, class: 'button is-primary'
