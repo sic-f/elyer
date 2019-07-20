@@ -1,0 +1,10 @@
+%article.card
+  .card-image
+    %figure.image
+      = image_tag 'https://picsum.photos/600'
+  .card-content
+    %h1.title #{place.name}
+    %h2.subtitle #{place.description}
+
+    .content
+      Location: #{place.address}
