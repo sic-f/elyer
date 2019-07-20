@@ -86,12 +86,12 @@ jobs:
             ./cc-test-reporter before-build
             bin/rails test:system test $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
             ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
+          notify:
+            webhooks:
+              - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN
       # Save test results for timing analysis
       - store_test_results:
           path: coverage
       # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
 
       # Coveralls parallel build reporting
-          notify:
-            webhooks:
-              - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN
