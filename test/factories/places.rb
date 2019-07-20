@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :place do
-    name { "MyString" }
-    description { "MyText" }
-    address { "MyString" }
-    mobile { "MyString" }
-    landline { "MyString" }
-    email { "MyString" }
+    name { 'Sabang Beach' }
+    description { 'Surf beach.' }
+    address { 'Baler, Aurora' }
+    mobile { 'n/a' }
+    landline { 'n/a' }
+    email { 'sabang@example.com' }
   end
 end
