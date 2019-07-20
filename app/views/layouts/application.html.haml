@@ -14,6 +14,7 @@
         = content_tag :button, nil, class: 'delete'
         = message
     = render 'layouts/hero'
-    %section.elyer-body
-      = render 'layouts/menu'
-      = yield
+    %section.section
+      .container.is-fullhd.elyer-body
+        = render 'layouts/menu'
+        = yield
