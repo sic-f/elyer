@@ -18,4 +18,10 @@ class PlaceTest < ActiveSupport::TestCase
 
     refute place.valid?
   end
+
+  test 'place responds' do
+    place = build :place
+
+    assert_equal place.respond_to?(:name), true
+  end
 end
