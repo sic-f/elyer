@@ -1,4 +1,9 @@
 class PlacesController < ApplicationController
+
+  def show
+    @place = Place.find(params[:id])
+  end
+
   def new
     @place = Place.new
   end
@@ -15,8 +20,10 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @place = Place.find(params[:id])
+
+    render :new
   end
 
   private
