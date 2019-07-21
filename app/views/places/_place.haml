@@ -18,3 +18,5 @@
       %p.card-footer-item.has-text-primary Mobile:&nbsp#{link_to place.mobile, "tel:#{place.mobile}"}
       %p.card-footer-item.has-text-warning Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
       %p.card-footer-item.has-text-info Email:&nbsp#{mail_to place.email}
+      = render_only_on_home_page do
+        = link_to 'More images', place, class: 'card-footer-item'
