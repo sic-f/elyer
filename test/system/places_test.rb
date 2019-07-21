@@ -13,7 +13,6 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'form#new_place', count: 1
   end
 
-
   # CREATE
   test 'create a place with valid fields' do
     assert_difference 'Place.count', 1 do
@@ -27,6 +26,7 @@ class PlacesTest < ApplicationSystemTestCase
       fill_in 'place[mobile]', with: '09954636990'
       fill_in 'place[landline]', with: '(02) 952-5463'
       fill_in 'place[email]', with: 'sabang@example.com'
+      attach_file 'place[main_photo]', image_upload_file, visible: false
       attach_file 'place[images][]', image_upload_file, visible: false
 
       click_button 'Submit'
@@ -48,6 +48,7 @@ class PlacesTest < ApplicationSystemTestCase
       fill_in 'place[mobile]', with: '09954636990'
       fill_in 'place[landline]', with: '(02) 952-5463'
       fill_in 'place[email]', with: 'sabang@example.com'
+      attach_file 'place[main_photo]', image_upload_file, visible: false
       attach_file 'place[images][]', image_upload_file, visible: false
 
       click_button 'Submit'
@@ -57,7 +58,6 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'p.help.is-danger', text: 'A name is needed.'
     assert_selector 'p.help.is-danger', text: 'You need to provide an address or location.'
   end
-
 
   # UPDATE
   test 'update a place with valid fields' do
@@ -88,9 +88,8 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'p.help.is-danger', text: 'You need to provide an address or location.'
   end
 
-
   # Image uploads
-  test 'upload image(s) of a place increments ActiveStorage::Attachment count' do
+  test 'upload images of a place increments ActiveStorage::Attachment count' do
     assert_difference 'ActiveStorage::Attachment.count', 1 do
       visit '/places/new'
 
@@ -102,13 +101,38 @@ class PlacesTest < ApplicationSystemTestCase
     end
   end
 
-  test 'upload image(s) of a place increments ActiveStorage::Blob count' do
+  test 'upload images of a place increments ActiveStorage::Blob count' do
     assert_difference 'ActiveStorage::Blob.count', 1 do
       visit '/places/new'
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[address]', with: 'Baler, Aurora'
       attach_file 'place[images][]', image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  # Main photo uploads
+  test 'upload main photo of a place increments ActiveStorage::Attachment count' do
+    assert_difference 'ActiveStorage::Attachment.count', 1 do
+      visit '/places/new'
+
+      fill_in 'place[name]', with: 'Sabang Beach'
+      fill_in 'place[address]', with: 'Baler, Aurora'
+      attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  test 'upload main photo of a place increments ActiveStorage::Blob count' do
+    assert_difference 'ActiveStorage::Blob.count', 1 do
+      visit '/places/new'
+
+      fill_in 'place[name]', with: 'Sabang Beach'
+      fill_in 'place[address]', with: 'Baler, Aurora'
+      attach_file 'place[main_photo]', image_upload_file, visible: false
 
       click_button 'Submit'
     end
