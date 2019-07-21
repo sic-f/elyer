@@ -1,6 +1,9 @@
 require 'test_helper'
+require 'support/attachments_helper'
 
 class PlaceTest < ActiveSupport::TestCase
+  include AttachmentsHelper
+
   test 'valid place' do
     place = build :place
 
@@ -17,5 +20,13 @@ class PlaceTest < ActiveSupport::TestCase
     place = build :place, address: nil
 
     refute place.valid?
+  end
+
+  test 'image upload' do
+    place = build :place
+
+    place.images.attach image_upload_file
+
+    assert_equal place.images.attached?, true
   end
 end
