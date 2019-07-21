@@ -3,6 +3,9 @@
     %article.card
       %header.card-header
         %span.card-header-title
+          = link_to root_path do
+            %span.icon
+              %i.fas.fa-arrow-circle-left
         = link_to edit_place_path(@place), class: 'card-header-icon',
           'aria-label' => 'more-options' do
           %span.icon
