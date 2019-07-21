@@ -2,6 +2,18 @@
   .container
     = form_with model: @place, id: :new_place, local: true do |form|
       .field.is-horizontal
+        .field-label.is-large
+          = form.label :main_photo, class: 'label'
+        .field-body
+          .file.is-info.is-boxed
+            %label.file-label
+              = form.file_field :main_photo, class: 'file-input'
+              %span.file-cta
+                %span.file-icon
+                  %i.fas.fa-cloud-upload-alt
+                %span.file-label Upload main photo
+
+      .field.is-horizontal
         .field-label.is-normal
           = form.label :name, class: 'label'
         .field-body
@@ -58,7 +70,7 @@
 
       .field.is-horizontal
         .field-label.is-medium
-          = form.label :images, 'Upload images', class: 'label'
+          = form.label :images, 'Upload more images', class: 'label'
         .field-body
           .field
             .control
