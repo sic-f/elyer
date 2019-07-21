@@ -9,7 +9,7 @@
         EDIT
     .card-image
       %figure.image
-        = image_tag 'https://picsum.photos/600'
+        = image_tag place_photos(place.main_photo)
     .card-content
       %h1.title.has-text-grey-light #{place.name}
       %h2.subtitle #{place.address}
