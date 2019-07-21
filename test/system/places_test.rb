@@ -88,6 +88,23 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'p.help.is-danger', text: 'You need to provide an address or location.'
   end
 
+  # DESTROY
+  test 'destroying a place' do
+    place = create :place
+
+    assert_difference 'Place.count', -1 do
+
+      visit "/places/#{place.to_param}"
+
+      accept_alert do
+        find('i.fas.fa-trash').click
+      end
+
+      assert_selector 'div.notification.is-success', text: 'Place deleted successfuly.'
+      assert_selector '.notification.is-info', text: 'There are no places yet.'
+    end
+  end
+
   # Image uploads
   test 'upload images of a place increments ActiveStorage::Attachment count' do
     assert_difference 'ActiveStorage::Attachment.count', 1 do
