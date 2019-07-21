@@ -1,1 +1,47 @@
-= render 'place', place: @place
+.columns
+  .column.is-one-third
+    %article.card
+      %header.card-header
+        %span.card-header-title
+        = link_to edit_place_path(@place), class: 'card-header-icon',
+          'aria-label' => 'more-options' do
+          %span.icon
+            %i.fas.fa-edit{ 'aria-hidden': true }
+          EDIT
+      .card-image
+        %figure.image
+          = image_tag place_photos(@place.main_photo),
+            class: 'place-image',
+            data: { image: url_for(place_photos(@place.main_photo)) }
+      .card-content
+        %h1.title.has-text-grey-light #{@place.name}
+        %h2.subtitle #{@place.address}
+        .content
+          #{simple_format @place.description}
+
+          %hr
+          .title.is-6 Mobile:&nbsp#{link_to @place.mobile, "tel:#{@place.mobile}"}
+          .title.is-6 Landline:&nbsp#{link_to @place.landline, "tel:#{@place.landline}"}
+          .title.is-6 Email:&nbsp#{mail_to @place.email}
+
+  .column
+    .title.is-5.has-text-primary More Images
+    - if @place.images.attached?
+      .columns.is-multiline.is-vcentered
+        - @place.images.each do |image|
+          .column.is-one-third
+            .box
+              %figure.image
+                = image_tag image.variant(resize: '200x200'), class: 'place-image', data: { image: url_for(image) }
+    - else
+      .container
+        %article.message.is-link
+          .message-header
+          .message-body No images yet
+
+    .modal#place-images-modal
+      .modal-background
+      .modal-content
+        %figure.image
+          = image_tag ''
+      %button.modal-close.is-large{ 'aria-label': 'close' }
