@@ -48,9 +48,4 @@
           .message-header
           .message-body No images yet
 
-    .modal#place-images-modal
-      .modal-background
-      .modal-content
-        %figure.image
-          = image_tag ''
-      %button.modal-close.is-large{ 'aria-label': 'close' }
+    = render 'place_image_modal'
