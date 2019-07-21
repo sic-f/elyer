@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-    parallelism: 1
+    parallelism: 3
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.6.3-node-browsers
@@ -87,7 +87,13 @@ jobs:
             bin/rails test:system test $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
             ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
 
+
       # Save test results for timing analysis
       - store_test_results:
           path: coverage
       # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
+
+    experimental:
+      notify:
+        webhooks:
+          - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN
