@@ -18,7 +18,7 @@
           EDIT
       .card-image
         %figure.image
-          = image_tag place_photos(@place.main_photo),
+          = image_tag place_photos(@place.main_photo).variant(resize: '400x300'),
             class: 'place-image',
             data: { image: url_for(place_photos(@place.main_photo)) }
       .card-content
