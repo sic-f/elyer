@@ -2,6 +2,8 @@
   %article.card
     %header.card-header
       = link_to place.name, place, class: 'card-header-title has-text-info'
+      = link_to 'More Details', place,
+        class: 'card-header-icon has-text-primary has-text-weight-semibold'
       = link_to edit_place_path(place), class: 'card-header-icon',
         'aria-label' => 'more-options' do
         %span.icon
