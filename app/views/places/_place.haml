@@ -13,7 +13,7 @@
     .card-content
       %h1.title.has-text-grey-light #{place.name}
       %h2.subtitle #{place.address}
-      .content #{place.description}
+      .content #{simple_format place.description}
     .card-footer
       %p.card-footer-item.has-text-primary Mobile:&nbsp#{link_to place.mobile, "tel:#{place.mobile}"}
       %p.card-footer-item.has-text-warning Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
