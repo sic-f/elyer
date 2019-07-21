@@ -1,17 +1,18 @@
 %article{ class: place_layout_class }
   %article.card
     %header.card-header
-      = link_to place.name, place, class: 'card-header-title has-text-info'
+      %p.card-header-title.has-text-primary.is-unselectable #{place.name}
       = link_to 'More Details', place,
-        class: 'card-header-icon has-text-primary has-text-weight-semibold'
+        class: 'card-header-icon has-text-info has-text-weight-semibold'
       = link_to edit_place_path(place), class: 'card-header-icon',
         'aria-label' => 'more-options' do
         %span.icon
           %i.fas.fa-edit{ 'aria-hidden': true }
         EDIT
     .card-image
-      %figure.image
-        = image_tag place_photos(place.main_photo)
+      = link_to place do
+        %figure.image
+          = image_tag place_photos(place.main_photo)
     .card-content
       %h1.title.has-text-grey-light #{place.name}
       %h2.subtitle #{place.address}
