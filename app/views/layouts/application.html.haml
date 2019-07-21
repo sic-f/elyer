@@ -8,14 +8,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{ src: 'https://kit.fontawesome.com/f89a405bc5.js' }
-  %body.has-navbar-fixed-bottom
+  %body.has-navbar-fixed-top
     - flash.each do |message_type, message|
-      = content_tag :div, class: "notification is-#{message_type} has-text-centered" do
+      = content_tag :div, class: "notification is-#{message_type} has-text-centered adjust-margin-for-fixed-navbar" do
         = message
-    = render 'layouts/hero'
     = render 'layouts/navbar'
     %section.section
-      .container.is-fullhd.elyer-body
+      .container.is-fullhd.is-flex-tablet
         = render 'layouts/menu'
         .container
           = yield

@@ -7,6 +7,14 @@ module PlacesHelper
     end
   end
 
+  def render_only_on_home_page(&block)
+    capture &block if pages_home?
+  end
+
+  def place_photos(main_photo)
+    main_photo.attached? ? main_photo : url_for('no_image.png')
+  end
+
   private
 
   def pages_home?

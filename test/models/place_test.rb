@@ -22,11 +22,19 @@ class PlaceTest < ActiveSupport::TestCase
     refute place.valid?
   end
 
-  test 'image upload' do
+  test '#images' do
     place = build :place
 
-    place.images.attach image_upload_file
+    place.images.attach(local_file)
 
     assert_equal place.images.attached?, true
+  end
+
+  test '#main_photo' do
+    place = build :place
+
+    place.main_photo.attach(local_file)
+
+    assert_equal place.main_photo.attached?, true
   end
 end
