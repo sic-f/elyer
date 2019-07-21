@@ -12,6 +12,9 @@
                 %span.file-icon
                   %i.fas.fa-cloud-upload-alt
                 %span.file-label Upload main photo
+              = has_main_photo?(@place) do
+                %span.file-name.is-centered
+                  = @place.main_photo.filename
 
       .field.is-horizontal
         .field-label.is-normal
