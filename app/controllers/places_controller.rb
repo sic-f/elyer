@@ -48,6 +48,7 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
+                                    :main_photo,
                                     images: [])
     end
 end
