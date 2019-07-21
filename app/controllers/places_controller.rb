@@ -47,6 +47,7 @@ class PlacesController < ApplicationController
                                     :address,
                                     :mobile,
                                     :landline,
-                                    :email)
+                                    :email,
+                                    images: [])
     end
 end

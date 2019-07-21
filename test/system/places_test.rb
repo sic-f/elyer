@@ -1,6 +1,9 @@
-require "application_system_test_case"
+require 'application_system_test_case'
+require 'support/attachments_helper'
 
 class PlacesTest < ApplicationSystemTestCase
+  include AttachmentsHelper
+
   # NEW
   test 'submit a place page' do
     visit '/'
@@ -9,6 +12,7 @@ class PlacesTest < ApplicationSystemTestCase
 
     assert_selector 'form#new_place', count: 1
   end
+
 
   # CREATE
   test 'create a place with valid fields' do
@@ -23,6 +27,7 @@ class PlacesTest < ApplicationSystemTestCase
       fill_in 'place[mobile]', with: '09954636990'
       fill_in 'place[landline]', with: '(02) 952-5463'
       fill_in 'place[email]', with: 'sabang@example.com'
+      attach_file 'place[images][]', image_upload_file, visible: false
 
       click_button 'Submit'
     end
@@ -43,6 +48,7 @@ class PlacesTest < ApplicationSystemTestCase
       fill_in 'place[mobile]', with: '09954636990'
       fill_in 'place[landline]', with: '(02) 952-5463'
       fill_in 'place[email]', with: 'sabang@example.com'
+      attach_file 'place[images][]', image_upload_file, visible: false
 
       click_button 'Submit'
     end
@@ -51,6 +57,7 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'p.help.is-danger', text: 'A name is needed.'
     assert_selector 'p.help.is-danger', text: 'You need to provide an address or location.'
   end
+
 
   # UPDATE
   test 'update a place with valid fields' do
@@ -79,5 +86,31 @@ class PlacesTest < ApplicationSystemTestCase
     assert_selector 'div.notification.is-danger', text: 'Unable to update place.'
     assert_selector 'p.help.is-danger', text: 'A name is needed.'
     assert_selector 'p.help.is-danger', text: 'You need to provide an address or location.'
+  end
+
+
+  # Image uploads
+  test 'upload image(s) of a place increments ActiveStorage::Attachment count' do
+    assert_difference 'ActiveStorage::Attachment.count', 1 do
+      visit '/places/new'
+
+      fill_in 'place[name]', with: 'Sabang Beach'
+      fill_in 'place[address]', with: 'Baler, Aurora'
+      attach_file 'place[images][]', image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  test 'upload image(s) of a place increments ActiveStorage::Blob count' do
+    assert_difference 'ActiveStorage::Blob.count', 1 do
+      visit '/places/new'
+
+      fill_in 'place[name]', with: 'Sabang Beach'
+      fill_in 'place[address]', with: 'Baler, Aurora'
+      attach_file 'place[images][]', image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
   end
 end

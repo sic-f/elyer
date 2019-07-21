@@ -2,7 +2,7 @@
   .container
     = form_with model: @place, id: :new_place, local: true do |form|
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :name, class: 'label'
         .field-body
           .field
@@ -12,7 +12,7 @@
               %p.help.is-danger A name is needed.
 
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :description, class: 'label'
         .field-body
           .field
@@ -21,7 +21,7 @@
             %p.help.is-info Tips, best thing about this place, bad reviews, etc.
 
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :address, 'Location', class: 'label'
         .field-body
           .field
@@ -31,7 +31,7 @@
               %p.help.is-danger You need to provide an address or location.
 
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :mobile, class: 'label'
         .field-body
           .field
@@ -40,7 +40,7 @@
             %p.help.is-info Separate numbers with commas (,)
 
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :landline, class: 'label'
         .field-body
           .field
@@ -49,15 +49,28 @@
             %p.help.is-info Separate numbers with commas (,)
 
       .field.is-horizontal
-        .field-label
+        .field-label.is-normal
           = form.label :email, class: 'label'
         .field-body
           .field
             .control
               = form.email_field :email, placeholder: 'Email', class: 'input'
 
-      .field.is-horizontal.is-grouped.is-grouped-right
-        .control
-          = link_to 'Go Back to Home', root_path, class: 'button is-info'
-        .control
-          = form.submit :Submit, class: 'button is-primary'
+      .field.is-horizontal
+        .field-label.is-medium
+          = form.label :images, 'Upload images', class: 'label'
+        .field-body
+          .field
+            .control
+              .file.is-warning.is-boxed
+                %label.file-label
+                  = form.file_field :images, class: 'file-input', multiple: true
+                  %span.file-cta
+                    %span.file-icon
+                      %i.fas.fa-cloud-upload-alt
+                    %span.file-label Upload images
+          .field.is-grouped.is-grouped-right
+            .control
+              = link_to 'Go Back to Home', root_path, class: 'button is-info'
+            .control
+              = form.submit :Submit, class: 'button is-primary'
