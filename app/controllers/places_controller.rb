@@ -39,6 +39,18 @@ class PlacesController < ApplicationController
     end
   end
 
+  def destroy
+    place = Place.find(params[:id])
+
+    if place.destroy
+      flash[:success] = 'Place deleted successfuly.'
+      redirect_to root_url
+    else
+      flash[:warning] = 'Something went wrong.'
+      render :show
+    end
+  end
+
   private
 
     def place_params
