@@ -7,6 +7,10 @@ module PlacesHelper
     end
   end
 
+  def render_only_on_home_page(&block)
+    capture &block if pages_home?
+  end
+
   private
 
   def pages_home?
