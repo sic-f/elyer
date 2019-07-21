@@ -1,16 +1,10 @@
 require 'application_system_test_case'
 
 class PagesTest < ApplicationSystemTestCase
-  test 'visiting the index' do
-    visit '/'
-
-    assert_selector 'h1', text: 'Pagikan'
-  end
-
   test 'navigation bar' do
     visit '/'
 
-    assert_selector 'nav.navbar', text: 'Home'
+    assert_selector 'nav.navbar', text: 'Balai'
   end
 
   test 'side navigation' do
