@@ -17,7 +17,7 @@
             %i.fas.fa-edit{ 'aria-hidden': true }
           EDIT
       .card-image
-        %figure.image
+        %figure.image.is-clickable
           = image_tag place_photos(@place.main_photo).variant(resize: '400x300'),
             class: 'place-image',
             data: { image: url_for(place_photos(@place.main_photo)) }
@@ -35,11 +35,12 @@
   .column
     .title.is-5.has-text-primary More Images
     - if @place.images.attached?
+      .subtitle.is-7.has-text-info click images to view
       .columns.is-multiline.is-vcentered
         - @place.images.each do |image|
           .column.is-one-third
             .box
-              %figure.image
+              %figure.image.is-clickable
                 = image_tag image.variant(resize: '200x200'), class: 'place-image', data: { image: url_for(image) }
     - else
       .container
@@ -47,9 +48,4 @@
           .message-header
           .message-body No images yet
 
-    .modal#place-images-modal
-      .modal-background
-      .modal-content
-        %figure.image
-          = image_tag ''
-      %button.modal-close.is-large{ 'aria-label': 'close' }
+    = render 'place_image_modal'
