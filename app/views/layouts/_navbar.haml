@@ -16,5 +16,8 @@
         %span.icon
           %i.fas.fa-map-pin
         = link_to 'Add', new_place_path, class: 'new-place-link'
-        - unless signed_in?
-          = link_to 'Sign up', signup_path, class: 'navbar-item sign-up-link'
+      - if signed_in?
+        = link_to 'Sign out', sign_out_path, class: 'navbar-item sign-out-link'
+      - else
+        = link_to 'Sign up', signup_path, class: 'navbar-item sign-up-link'
+        = link_to 'Sign in', sign_in_path, class: 'navbar-item sign-in-link'
