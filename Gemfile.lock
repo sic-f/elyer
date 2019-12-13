@@ -246,7 +246,8 @@ GEM
       pry (~> 0.10)
     psych (3.1.0)
     public_suffix (4.0.1)
-    puma (3.12.2)
+    puma (4.3.1)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -403,7 +404,7 @@ DEPENDENCIES
   minitest-reporters
   pg (>= 0.18, < 2.0)
   pry-byebug
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 6.0.1)
   reek
   rubocop
