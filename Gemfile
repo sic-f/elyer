@@ -34,8 +34,8 @@ gem 'mini_magick', '~> 4.8'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'bulma-rails'
 gem 'haml-rails', '~> 2.0'
-gem 'bulma-rails', '~> 0.7.5'
 gem 'clearance'
 
 group :development, :test do
