@@ -12,7 +12,7 @@
     .card-image
       = link_to place do
         %figure.image
-          = image_tag place_photos(place.main_photo)
+          = image_tag place_main_photo(place.main_photo)
     .card-content
       %h1.title.has-text-grey-light #{place.name}
       %h2.subtitle #{place.address}
