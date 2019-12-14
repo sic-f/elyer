@@ -5,11 +5,13 @@ class PlacesController < ApplicationController
   end
 
   def new
+    @user  = User.find(params[:user_id])
     @place = Place.new
   end
 
   def create
-    @place = Place.new(place_params)
+    @user  = current_user
+    @place = @user.places.new(place_params)
 
     if @place.save
       flash[:success] = 'Successfully submitted place!'

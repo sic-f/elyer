@@ -22,6 +22,12 @@ class PlaceTest < ActiveSupport::TestCase
     refute place.valid?
   end
 
+  test 'invalid without user' do
+    place = build :place, user: nil
+
+    refute place.valid?
+  end
+
   test '#images' do
     place = build :place
 

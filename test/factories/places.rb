@@ -6,5 +6,6 @@ FactoryBot.define do
     mobile { 'n/a' }
     landline { 'n/a' }
     email { 'sabang@example.com' }
+    user
   end
 end
