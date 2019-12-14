@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/signup', to: 'users#new'
   get '/login', to: 'clearance/sessions#new', as: 'sign_in'
+  delete '/logout', to: 'clearance/sessions#destroy', as: 'sign_out'
 
   # Authentication
   resources :users, only: [:create] do
