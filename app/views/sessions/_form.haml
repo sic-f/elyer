@@ -1,0 +1,23 @@
+= form_with scope: :session,
+            url: session_path,
+            local: true,
+            class: 'user-authentication-form' do |form|
+  .field
+    = form.label :email, class: %i[label has-text-light]
+    .control.has-icons-left
+      = form.text_field :email, type: :email, class: :input, placeholder: :email
+      %span.icon.is-small.is-left
+        %i.fas.fa-envelope
+
+  .field
+    %label.label.has-text-light Password
+    .control.has-icons-left
+      = form.text_field :password, type: :password, class: :input,
+        placeholder: :password
+      %span.icon.is-small.is-left
+        %i.fas.fa-key
+
+  .field
+    %div
+    .control
+      = form.submit 'Sign in', class: 'button is-primary'
