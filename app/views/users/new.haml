@@ -1,0 +1,10 @@
+%head
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %script{ src: 'https://kit.fontawesome.com/f89a405bc5.js' }
+
+%section.hero.is-info.is-fullheight
+  .hero-body
+    .container
+      %h1.title.has-text-centered= t('.title')
+      = form_with model: @user, local: true, class: 'sign-up-form' do |form|
+        = render partial: 'form', locals: { form: form, user: @user }

@@ -8,7 +8,7 @@ class PlacesTest < ApplicationSystemTestCase
   test 'submit a place page' do
     visit '/'
 
-    find('.navbar-item > a').click
+    find('.navbar-item > a.new-place-link').click
 
     assert_selector 'form#new_place', count: 1
   end
@@ -18,7 +18,7 @@ class PlacesTest < ApplicationSystemTestCase
     assert_difference 'Place.count', 1 do
       visit '/'
 
-      find('.navbar-item > a').click
+      find('.navbar-item > a.new-place-link').click
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[description]', with: 'Surf beach'
@@ -40,7 +40,7 @@ class PlacesTest < ApplicationSystemTestCase
     assert_difference 'Place.count', 0 do
       visit '/'
 
-      find('.navbar-item > a').click
+      find('.navbar-item > a.new-place-link').click
 
       fill_in 'place[name]', with: ''
       fill_in 'place[description]', with: 'Surf beach'

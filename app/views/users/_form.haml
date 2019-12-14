@@ -1,0 +1,39 @@
+.field
+  = form.label :first_name, class: %i[label has-text-light]
+  .control.has-icons-left
+    = form.text_field :first_name, class: :input, placeholder: :first_name
+    %span.icon.is-small.is-left
+      %i.fas.fa-envelope
+  - if user.errors.messages[:first_name].present?
+    %p.help.is-warning.user-first-name= user.errors.messages[:first_name].first
+
+.field
+  = form.label :last_name, class: %i[label has-text-light]
+  .control.has-icons-left
+    = form.text_field :last_name, class: :input, placeholder: :last_name
+    %span.icon.is-small.is-left
+      %i.fas.fa-envelope
+  - if user.errors.messages[:last_name].present?
+    %p.help.is-warning.user-last-name= user.errors.messages[:last_name].first
+
+.field
+  = form.label :email, class: %i[label has-text-light]
+  .control.has-icons-left
+    = form.text_field :email, type: :email, class: :input, placeholder: :email
+    %span.icon.is-small.is-left
+      %i.fas.fa-envelope
+  - if user.errors.messages[:email].present?
+    %p.help.is-warning.user-email= user.errors.messages[:email].first
+
+.field
+  = form.label :password, class: %i[label has-text-light]
+  .control.has-icons-left
+    = form.password_field :password, type: :password, class: :input, placeholder: :password
+    %span.icon.is-small.is-left
+      %i.fas.fa-key
+  - if user.errors.messages[:password].present?
+    %p.help.is-warning.user-password= user.errors.messages[:password].first
+
+.field
+  .control
+    = form.submit 'Create Account', class: %i[button is-primary]
