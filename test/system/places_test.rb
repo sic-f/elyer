@@ -6,9 +6,11 @@ class PlacesTest < ApplicationSystemTestCase
 
   # NEW
   test 'submit a place page' do
-    visit '/'
+    user = create :user
 
-    find('.navbar-item > a.new-place-link').click
+    visit root_path as: user
+
+    find('.navbar-item.new-place-link').click
 
     assert_selector 'form#new_place', count: 1
   end
@@ -16,9 +18,11 @@ class PlacesTest < ApplicationSystemTestCase
   # CREATE
   test 'create a place with valid fields' do
     assert_difference 'Place.count', 1 do
-      visit '/'
+      user = create :user
 
-      find('.navbar-item > a.new-place-link').click
+      visit root_path as: user
+
+      find('.navbar-item.new-place-link').click
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[description]', with: 'Surf beach'
@@ -38,9 +42,11 @@ class PlacesTest < ApplicationSystemTestCase
 
   test 'create a place with invalid fields' do
     assert_difference 'Place.count', 0 do
-      visit '/'
+      user = create :user
 
-      find('.navbar-item > a.new-place-link').click
+      visit root_path as: user
+
+      find('.navbar-item.new-place-link').click
 
       fill_in 'place[name]', with: ''
       fill_in 'place[description]', with: 'Surf beach'

@@ -1,0 +1,18 @@
+%section.hero.is-info.is-fullheight
+  .hero-body
+    .container
+      %h1.title.has-text-centered= t('.title')
+      = render partial: 'sessions/form'
+  .hero-foot
+    %nav.tabs.is-boxed.is-fullwidth
+      .container
+        %ul
+          %li
+            = link_to t('.home'), root_path, class: 'has-text-light home-link'
+          %li
+            = link_to t('.forgot_password'),
+                      'javascript:void(0)',
+                      class: 'has-text-light forgot-password-link'
+          - if Clearance.configuration.allow_sign_up?
+            %li
+              = link_to t('.sign_up'), signup_path, class: 'has-text-light sign-up-link'
