@@ -71,4 +71,18 @@ class AuthenticationTest < ApplicationSystemTestCase
     assert_selector '.navbar-item.sign-in-link'
     assert_selector '.navbar-item.sign-up-link'
   end
+
+  test "account and user's contributions links not visible when not signed in" do
+    visit '/'
+
+    refute_selector '.navbar-item.account-link', text: 'Account'
+    refute_selector '.navbar-item.user-contributions-link', text: 'Your Contributions'
+  end
+
+  test "profile and user's contributions sidebar links not visible when not signed in" do
+    visit '/'
+
+    refute_selector '.menu-item.profile-link', text: 'Account'
+    refute_selector '.menu-item.user-contributions-link', text: 'Your Contributions'
+  end
 end

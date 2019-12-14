@@ -10,7 +10,7 @@ class PagesTest < ApplicationSystemTestCase
   test 'side navigation' do
     visit '/'
 
-    assert_selector 'aside.menu', text: 'ACCOUNT'
+    assert_selector 'aside.menu', text: 'HOME'
   end
 
   test 'index page has no places' do
