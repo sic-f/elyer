@@ -4,9 +4,10 @@ class SignUpTest < ApplicationSystemTestCase
   test 'account creation page' do
     visit '/'
 
-    find('.navbar-item > a.sign-up-link').click
+    find('.navbar-item.sign-up-link').click
 
     assert_selector 'h1.title', text: 'Sign up'
+    assert_selector '.user-authentication-form'
   end
 
   test 'successfully created an account' do

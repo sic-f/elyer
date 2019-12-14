@@ -2,5 +2,5 @@
   .hero-body
     .container
       %h1.title.has-text-centered= t('.title')
-      = form_with model: @user, local: true, class: 'sign-up-form' do |form|
+      = form_with model: @user, local: true, class: 'user-authentication-form' do |form|
         = render partial: 'form', locals: { form: form, user: @user }
