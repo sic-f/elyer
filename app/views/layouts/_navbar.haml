@@ -17,7 +17,7 @@
           %span.icon
             %i.fas.fa-map-pin
           = link_to 'Add', new_place_path
-        = link_to 'Sign out', 'javascript:void(0)', class: 'navbar-item sign-out-link'
+        = link_to 'Sign out', sign_out_path, method: :delete, class: 'navbar-item sign-out-link'
       - else
         = link_to 'Sign up', signup_path, class: 'navbar-item sign-up-link'
         = link_to 'Sign in', sign_in_path, class: 'navbar-item sign-in-link'
