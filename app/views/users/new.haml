@@ -4,3 +4,12 @@
       %h1.title.has-text-centered= t('.title')
       = form_with model: @user, local: true, class: 'user-authentication-form' do |form|
         = render partial: 'form', locals: { form: form, user: @user }
+  .hero-foot
+    %nav.tabs.is-boxed.is-fullwidth
+      .container
+        %ul
+          %li
+            = link_to t('.home'), root_path, class: 'has-text-light home-link'
+          - if Clearance.configuration.allow_sign_up?
+            %li
+              = link_to t('.sign_in'), sign_in_path, class: 'has-text-light sign-in-link'

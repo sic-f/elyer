@@ -8,6 +8,8 @@ class SignUpTest < ApplicationSystemTestCase
 
     assert_selector 'h1.title', text: 'Sign up'
     assert_selector '.user-authentication-form'
+    assert_selector '.home-link', text: 'Home'
+    assert_selector '.sign-in-link', text: 'Sign in'
   end
 
   test 'successfully created an account' do
