@@ -13,7 +13,7 @@
           %span.icon
             %i.fas.fa-trash{ 'aria-hidden': true }
         - if authorized_to(:edit?, @place)
-          = link_to edit_place_path(@place), class: 'card-header-icon',
+          = link_to edit_place_path(@place), class: 'card-header-icon edit-place-link',
             'aria-label' => 'more-options' do
             %span.icon
               %i.fas.fa-edit{ 'aria-hidden': true }
