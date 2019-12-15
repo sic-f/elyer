@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def show
     @place = Place.find(params[:id])

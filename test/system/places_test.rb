@@ -71,6 +71,8 @@ class PlacesTest < ApplicationSystemTestCase
   test 'update a place with valid fields' do
     place = create :place
 
+    sign_in
+
     visit "/places/#{place.to_param}/edit"
 
     fill_in 'place[name]', with: 'Aliya Surf Resort'
@@ -83,6 +85,8 @@ class PlacesTest < ApplicationSystemTestCase
 
   test 'updating a place with invalid fields' do
     place = create :place
+
+    sign_in
 
     visit "/places/#{place.to_param}/edit"
 
@@ -100,8 +104,9 @@ class PlacesTest < ApplicationSystemTestCase
   test 'destroying a place' do
     place = create :place
 
-    assert_difference 'Place.count', -1 do
+    sign_in
 
+    assert_difference 'Place.count', -1 do
       visit "/places/#{place.to_param}"
 
       accept_alert do
