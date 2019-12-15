@@ -26,11 +26,15 @@ class PlacesController < ApplicationController
   def edit
     @place = Place.find(params[:id])
 
+    authorize @place
+
     render :new
   end
 
   def update
     @place = Place.find(params[:id])
+
+    authorize @place
 
     if @place.update(place_params)
       flash[:success] = 'Update success!'
@@ -44,6 +48,8 @@ class PlacesController < ApplicationController
 
   def destroy
     place = Place.find(params[:id])
+
+    authorize place
 
     if place.destroy
       flash[:success] = 'Place deleted successfuly.'
