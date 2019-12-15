@@ -1,33 +1,8 @@
-Given(/^I am on the home page$/) do
-  visit '/'
-end
-
-Given(/^I am on the sign up page$/) do
-  visit signup_path
-end
-
-And(/^I click on "([^"]*)" link$/) do |link|
-  click_link link
-end
-
-And(/^I click on "([^"]*)" button$/) do |button|
-  click_button button
-end
-
-Then(/^I should be on the sign up page$/) do
-  assert_selector 'h1.title', text: 'Sign up'
-  assert_selector '.user-authentication-form'
-  assert_selector '.home-link', text: 'Home'
-  assert_selector '.sign-in-link', text: 'Sign in'
-end
-
-
 first_name = FFaker::NamePH.first_name_female
 last_name  = FFaker::NamePH.last_name
 
-
 # Successful Account Creation
-And(/^I fill in the required fields$/) do
+And(/^I fill in the required fields for creating an account$/) do
   fill_in 'user[first_name]', with: first_name
   fill_in 'user[last_name]', with: last_name
   fill_in 'user[email]', with: FFaker::Internet.safe_email

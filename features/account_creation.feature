@@ -10,7 +10,7 @@ Feature: Account Creation
 
   Scenario: Successful account creation
     Given I am on the sign up page
-    When I fill in the required fields
+    When I fill in the required fields for creating an account
     And I click on "Create Account" button
     Then I should be redirected to the home page and see the welcome flash message
 
@@ -21,21 +21,21 @@ Feature: Account Creation
     Then I should see an error message indicating an invalid email
     And I should still be in the sign up page
 
-  Scenario: Unsuccessful account creation with no first name 
+  Scenario: Unsuccessful account creation with no first name
     Given I am on the sign up page
     When I fill in the required fields except first name
     And I click on "Create Account" button
     Then I should see an error message indicating a blank first name
     And I should still be in the sign up page
 
-  Scenario: Unsuccessful account creation with no last name 
+  Scenario: Unsuccessful account creation with no last name
     Given I am on the sign up page
     When I fill in the required fields except last name
     And I click on "Create Account" button
     Then I should see an error message indicating a blank last name
     And I should still be in the sign up page
 
-  Scenario: Unsuccessful account creation with no password 
+  Scenario: Unsuccessful account creation with no password
     Given I am on the sign up page
     When I fill in the required fields except password
     And I click on "Create Account" button
