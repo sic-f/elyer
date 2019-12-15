@@ -7,6 +7,7 @@ class PlacesController < ApplicationController
 
   def new
     @user  = User.find(params[:user_id])
+    authorize @user, policy_class: PlacePolicy
     @place = Place.new
   end
 
