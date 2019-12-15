@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PlaceTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   test 'valid user' do
     user = build :user
 
@@ -31,4 +31,3 @@ class PlaceTest < ActiveSupport::TestCase
     refute user.valid?
   end
 end
-
