@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def show
     @place = Place.find(params[:id])
@@ -6,6 +7,7 @@ class PlacesController < ApplicationController
 
   def new
     @user  = User.find(params[:user_id])
+    authorize @user, policy_class: PlacePolicy
     @place = Place.new
   end
 
@@ -25,11 +27,15 @@ class PlacesController < ApplicationController
   def edit
     @place = Place.find(params[:id])
 
+    authorize @place
+
     render :new
   end
 
   def update
     @place = Place.find(params[:id])
+
+    authorize @place
 
     if @place.update(place_params)
       flash[:success] = 'Update success!'
@@ -43,6 +49,8 @@ class PlacesController < ApplicationController
 
   def destroy
     place = Place.find(params[:id])
+
+    authorize place
 
     if place.destroy
       flash[:success] = 'Place deleted successfuly.'

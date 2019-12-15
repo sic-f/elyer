@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bulma-rails'
 gem 'clearance'
 gem 'haml-rails', '~> 2.0'
+gem 'pundit'
 
 group :development, :test do
   gem 'coveralls', require: false

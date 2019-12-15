@@ -69,7 +69,10 @@ class PlacesTest < ApplicationSystemTestCase
 
   # UPDATE
   test 'update a place with valid fields' do
-    place = create :place
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
 
     visit "/places/#{place.to_param}/edit"
 
@@ -82,7 +85,10 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test 'updating a place with invalid fields' do
-    place = create :place
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
 
     visit "/places/#{place.to_param}/edit"
 
@@ -98,10 +104,12 @@ class PlacesTest < ApplicationSystemTestCase
 
   # DESTROY
   test 'destroying a place' do
-    place = create :place
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
 
     assert_difference 'Place.count', -1 do
-
       visit "/places/#{place.to_param}"
 
       accept_alert do
@@ -172,9 +180,10 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test 'update main photo of a place does not increment ActiveStorage::Attachment count' do
-      sign_in
+      user  = create :user
+      place = create :place, user: user
 
-      place = create :place
+      sign_in_as user
 
       visit edit_place_path place
 
@@ -192,9 +201,10 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test 'update main photo of a place does not increment ActiveStorage::Blob count' do
-      sign_in
+      user  = create :user
+      place = create :place, user: user
 
-      place = create :place
+      sign_in_as user
 
       visit edit_place_path place
 
@@ -209,5 +219,74 @@ class PlacesTest < ApplicationSystemTestCase
 
       click_button 'Submit'
     end
+  end
+
+  # Edit link on a Place card in index page
+  test 'does not display "EDIT" link when not authorized' do
+    user = create :user
+    create :place
+
+    sign_in_as user
+
+    visit '/'
+
+    refute_selector '.edit-place-link', text: 'EDIT'
+  end
+
+  test 'displays "EDIT" link when authorized' do
+    user = create :user
+    create :place, user: user
+
+    sign_in_as user
+
+    visit '/'
+
+    assert_selector '.edit-place-link', text: 'EDIT'
+  end
+
+  # Edit link on a Place card in show page
+  test 'does not display in show page the "EDIT" link when not authorized' do
+    user  = create :user
+    place = create :place
+
+    sign_in_as user
+
+    visit place_path place
+
+    refute_selector '.edit-place-link', text: 'EDIT'
+  end
+
+  test 'displays in show page the "EDIT" link when authorized' do
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
+
+    visit place_path place
+
+    assert_selector '.edit-place-link', text: 'EDIT'
+  end
+
+  # Delete (trash can) link on a Place card in show page
+  test 'does not display in show page the trash can link when not authorized' do
+    user  = create :user
+    place = create :place
+
+    sign_in_as user
+
+    visit place_path place
+
+    refute_selector '.trash-can-link'
+  end
+
+  test 'displays in show page the trash can link when authorized' do
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
+
+    visit place_path place
+
+    assert_selector '.trash-can-link'
   end
 end

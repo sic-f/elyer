@@ -4,4 +4,8 @@ module SignInHelper
     @user = create :user
     visit root_path as: @user
   end
+
+  def sign_in_as(user)
+    visit root_path as: user
+  end
 end
