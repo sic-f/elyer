@@ -71,7 +71,6 @@ group :test do
   # gem 'capybara', '>= 2.15'
   gem 'minitest-reporters'
   gem 'selenium-webdriver'
-  # gem 'shoulda-matchers'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
