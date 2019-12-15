@@ -170,4 +170,44 @@ class PlacesTest < ApplicationSystemTestCase
       click_button 'Submit'
     end
   end
+
+  test 'update main photo of a place does not increment ActiveStorage::Attachment count' do
+      sign_in
+
+      place = create :place
+
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+
+    assert_difference 'ActiveStorage::Attachment.count', 0 do
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', another_image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  test 'update main photo of a place does not increment ActiveStorage::Blob count' do
+      sign_in
+
+      place = create :place
+
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+
+    assert_difference 'ActiveStorage::Blob.count', 0 do
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', another_image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
 end
