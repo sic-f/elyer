@@ -10,7 +10,7 @@
         %i.fas.fa-envelope
 
   .field
-    %label.label.has-text-light Password
+    = form.label :password, class: %i[label has-text-light]
     .control.has-icons-left
       = form.text_field :password, type: :password, class: :input,
         placeholder: :password
