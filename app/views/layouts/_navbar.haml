@@ -17,7 +17,7 @@
         .navbar-item.new-place-link
           %span.icon
             %i.fas.fa-map-pin
-          = link_to 'Add', new_place_path
+          = link_to 'Add', new_user_place_path(current_user)
         = link_to 'Sign out', sign_out_path, method: :delete, class: 'navbar-item sign-out-link'
       - else
         = link_to 'Sign up', signup_path, class: 'navbar-item sign-up-link'

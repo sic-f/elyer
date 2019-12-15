@@ -1,7 +1,7 @@
 %h1.title.is-marginless.has-text-primary Submit a place
 %section.section
   .container
-    = form_with model: @place, id: :new_place, local: true do |form|
+    = form_with model: [@user, @place], id: :new_place, local: true do |form|
       .field.is-horizontal
         .field-label.is-large
           = form.label :main_photo, class: 'label'

@@ -1,26 +1,30 @@
 require 'application_system_test_case'
 require 'support/attachments_helper'
+require 'support/sign_in_helper'
 
 class PlacesTest < ApplicationSystemTestCase
   include AttachmentsHelper
+  include SignInHelper
 
   # NEW
   test 'submit a place page' do
-    user = create :user
-
-    visit root_path as: user
+    sign_in
 
     find('.navbar-item.new-place-link').click
 
     assert_selector 'form#new_place', count: 1
   end
 
+  test 'can not submit a place without logging in' do
+    visit '/'
+
+    refute_selector '.navbar-item.new-place-link', count: 1
+  end
+
   # CREATE
   test 'create a place with valid fields' do
     assert_difference 'Place.count', 1 do
-      user = create :user
-
-      visit root_path as: user
+      sign_in
 
       find('.navbar-item.new-place-link').click
 
@@ -42,9 +46,7 @@ class PlacesTest < ApplicationSystemTestCase
 
   test 'create a place with invalid fields' do
     assert_difference 'Place.count', 0 do
-      user = create :user
-
-      visit root_path as: user
+      sign_in
 
       find('.navbar-item.new-place-link').click
 
@@ -114,7 +116,9 @@ class PlacesTest < ApplicationSystemTestCase
   # Image uploads
   test 'upload images of a place increments ActiveStorage::Attachment count' do
     assert_difference 'ActiveStorage::Attachment.count', 1 do
-      visit '/places/new'
+      sign_in
+
+      click_link 'Add'
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[address]', with: 'Baler, Aurora'
@@ -126,7 +130,9 @@ class PlacesTest < ApplicationSystemTestCase
 
   test 'upload images of a place increments ActiveStorage::Blob count' do
     assert_difference 'ActiveStorage::Blob.count', 1 do
-      visit '/places/new'
+      sign_in
+
+      click_link 'Add'
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[address]', with: 'Baler, Aurora'
@@ -139,7 +145,9 @@ class PlacesTest < ApplicationSystemTestCase
   # Main photo uploads
   test 'upload main photo of a place increments ActiveStorage::Attachment count' do
     assert_difference 'ActiveStorage::Attachment.count', 1 do
-      visit '/places/new'
+      sign_in
+
+      visit new_user_place_path @user
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[address]', with: 'Baler, Aurora'
@@ -151,11 +159,53 @@ class PlacesTest < ApplicationSystemTestCase
 
   test 'upload main photo of a place increments ActiveStorage::Blob count' do
     assert_difference 'ActiveStorage::Blob.count', 1 do
-      visit '/places/new'
+      sign_in
+
+      visit new_user_place_path @user
 
       fill_in 'place[name]', with: 'Sabang Beach'
       fill_in 'place[address]', with: 'Baler, Aurora'
       attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  test 'update main photo of a place does not increment ActiveStorage::Attachment count' do
+      sign_in
+
+      place = create :place
+
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+
+    assert_difference 'ActiveStorage::Attachment.count', 0 do
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', another_image_upload_file, visible: false
+
+      click_button 'Submit'
+    end
+  end
+
+  test 'update main photo of a place does not increment ActiveStorage::Blob count' do
+      sign_in
+
+      place = create :place
+
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', image_upload_file, visible: false
+
+      click_button 'Submit'
+
+    assert_difference 'ActiveStorage::Blob.count', 0 do
+      visit edit_place_path place
+
+      attach_file 'place[main_photo]', another_image_upload_file, visible: false
 
       click_button 'Submit'
     end
