@@ -223,7 +223,7 @@ class PlacesTest < ApplicationSystemTestCase
 
   # Edit link on a Place card in index page
   test 'does not display "EDIT" link when not authorized' do
-    user  = create :user
+    user = create :user
     create :place
 
     sign_in_as user
@@ -234,7 +234,7 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test 'displays "EDIT" link when authorized' do
-    user  = create :user
+    user = create :user
     create :place, user: user
 
     sign_in_as user
@@ -265,5 +265,28 @@ class PlacesTest < ApplicationSystemTestCase
     visit place_path place
 
     assert_selector '.edit-place-link', text: 'EDIT'
+  end
+
+  # Delete (trash can) link on a Place card in show page
+  test 'does not display in show page the trash can link when not authorized' do
+    user  = create :user
+    place = create :place
+
+    sign_in_as user
+
+    visit place_path place
+
+    refute_selector '.trash-can-link'
+  end
+
+  test 'displays in show page the trash can link when authorized' do
+    user  = create :user
+    place = create :place, user: user
+
+    sign_in_as user
+
+    visit place_path place
+
+    assert_selector '.trash-can-link'
   end
 end
