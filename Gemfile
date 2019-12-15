@@ -64,11 +64,14 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # gem 'capybara', '>= 2.15'
   gem 'minitest-reporters'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
+  # gem 'shoulda-matchers'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
