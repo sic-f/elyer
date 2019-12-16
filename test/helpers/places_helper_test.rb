@@ -4,18 +4,6 @@ require 'support/attachments_helper'
 class PlacesHelperTest < ActionView::TestCase
   include AttachmentsHelper
 
-  test '#place_layout_class is for showing a place' do
-    controller.params = { controller: 'places', action: 'show' }
-
-    assert_equal place_layout_class, 'main-view-item'
-  end
-
-  test '#place_layout_class is for the home page' do
-    controller.params = { controller: 'pages', action: 'home' }
-
-    assert_equal place_layout_class, 'main-view-item -index'
-  end
-
   test '#place_main_photo' do
     place = build :place
 

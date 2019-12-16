@@ -18,10 +18,10 @@ module PlacesHelper
   private
 
   def pages_home?
-    params[:controller] == 'pages' && params[:action] == 'home'
+    controller_path == 'pages' && action_name == 'home'
   end
 
   def places_show?
-    params[:controller] == 'places' && params[:action] == 'show'
+    controller_path == 'places' && action_name == 'show'
   end
 end
