@@ -26,12 +26,20 @@ And(/^I click on "([^"]*)" button$/) do |button|
   click_button button
 end
 
+And(/^user clicks on "([^"]*)" button$/) do |link|
+  click_button link
+end
+
 Given(/^I am signed in$/) do
   login
 end
 
 Given(/^a user "([^"]*)" is signed in$/) do |user|
   log_in user
+end
+
+Given(/^a user "([^"]*)" is signed in and is on the home page$/) do |user|
+  signed_in_on_homepage user
 end
 
 Then(/^I should be on the sign up page$/) do

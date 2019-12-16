@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'clearance/sessions#destroy', as: 'sign_out'
 
   # Authentication
-  resources :users, only: %i[show create] do
+  resources :users, only: %i[show create edit update] do
     get :places, on: :member
     resource :password,
              controller: 'clearance/passwords',
