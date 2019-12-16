@@ -1,4 +1,6 @@
 class UsersController < Clearance::UsersController
+  layout 'application', only: :places
+
   def new
     @user = User.new
   end
@@ -14,6 +16,10 @@ class UsersController < Clearance::UsersController
     else
       render :new
     end
+  end
+
+  def places
+    @places = current_user.places
   end
 
   private

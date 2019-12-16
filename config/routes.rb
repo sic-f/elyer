@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # Authentication
   resources :users, only: [:create] do
+    get :places, on: :member
     resource :password,
              controller: 'clearance/passwords',
              only: %i[create edit update]
