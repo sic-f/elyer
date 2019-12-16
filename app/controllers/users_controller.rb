@@ -27,7 +27,7 @@ class UsersController < Clearance::UsersController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    if @user.update(update_params)
       flash[:success] = 'Account successfuly updated.'
       redirect_to @user
     else
@@ -43,5 +43,17 @@ class UsersController < Clearance::UsersController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
+  end
+
+  def update_params
+    update_params = user_params
+
+    delete_password_if_not_present_in(update_params)
+
+    update_params
+  end
+  
+  def delete_password_if_not_present_in(update_params)
+    update_params.delete(:password) if user_params[:password].blank?
   end
 end
