@@ -1,4 +1,4 @@
-module SignInHelpers
+module SignInHelper
   # For System Tests
   def sign_in
     @user = create :user
@@ -9,3 +9,5 @@ module SignInHelpers
     visit root_path as: user
   end
 end
+
+World SignInHelper

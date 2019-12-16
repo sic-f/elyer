@@ -10,8 +10,8 @@
     .navbar-start
       = link_to 'Balai', root_path, class: 'navbar-item'
       - if signed_in?
-        = link_to 'Account', nil, class: 'navbar-item account-link'
-        = link_to 'Your Contributions', nil, class: 'navbar-item user-contributions-link'
+        = link_to 'Account', current_user, class: 'navbar-item account-link'
+        = link_to 'Your Contributions', places_user_path(current_user), class: 'navbar-item user-contributions-link'
     .navbar-end
       - if signed_in?
         .navbar-item.new-place-link

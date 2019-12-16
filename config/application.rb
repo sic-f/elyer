@@ -18,7 +18,6 @@ module Elyer
 
     config.to_prepare do
       Clearance::SessionsController.layout 'clearance_authentication'
-      Clearance::UsersController.layout'clearance_authentication'
     end
   end
 end

@@ -47,7 +47,7 @@ end
 
 # "Account" and "Your Contributions" link not visible when not signed in
 When(/^I am on the home page and not signed in$/) do
-  visit '/'
+  visit_home_page
 end
 
 Then(/^The "Account" and "Your Contributions" links are not visible$/) do

@@ -1,0 +1,64 @@
+%h3.title.is-3 #{full_name}
+
+%section.section
+  .container
+    = form_with model: @user, local: true, class: 'user-authentication-form' do |form|
+      .field
+        = form.label :first_name, class: %i[label]
+        .control.has-icons-left
+          = form.text_field :first_name, class: :input, placeholder: :first_name
+          %span.icon.is-small.is-left
+            %i.fas.fa-snowboarding
+        - if @user.errors.messages[:first_name].present?
+          %p.help.is-danger.user-first-name= @user.errors.messages[:first_name].first
+
+      .field
+        = form.label :last_name, class: %i[label]
+        .control.has-icons-left
+          = form.text_field :last_name, class: :input, placeholder: :last_name
+          %span.icon.is-small.is-left
+            %i.fas.fa-user-injured
+        - if @user.errors.messages[:last_name].present?
+          %p.help.is-danger.user-last-name= @user.errors.messages[:last_name].first
+
+      .field
+        = form.label :email, class: %i[label]
+        .control.has-icons-left
+          = form.text_field :email, type: :email, class: :input, placeholder: :email
+          %span.icon.is-small.is-left
+            %i.fas.fa-envelope
+        - if @user.errors.messages[:email].present?
+          %p.help.is-danger.user-email= @user.errors.messages[:email].first
+
+      .field
+        = form.label :password, class: %i[label]
+        .control.has-icons-left
+          = form.text_field :password, type: :password, class: :input,
+            placeholder: :password
+          %span.icon.is-small.is-left
+            %i.fas.fa-key
+        - if @user.errors.messages[:password].present?
+          %p.help.is-danger.user-password= @user.errors.messages[:password].first
+
+      .field
+        .file.is-small.has-name
+          %label.file-label
+            .control
+              = form.file_field :avatar, class: 'file-input'
+              %span.file-cta
+                %span.file-icon
+                  %i.fas.fa-cloud-upload-alt
+                %span.file-label Upload avatar
+              = has_avatar? current_user do
+                %span.file-name.is-centered
+                  = current_user.avatar.filename
+
+      .field
+        .control
+          .level
+            .level-left
+              .level-item
+                = form.submit 'Update', class: 'button is-info'
+            .level-right
+              .level-item
+                = link_to 'Go back to Profile', current_user, class: 'button is-small is-outlined is-dark'

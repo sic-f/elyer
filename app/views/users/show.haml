@@ -1,0 +1,19 @@
+%h3.title.is-3 #{full_name}
+
+.container
+  %section.section
+    .container
+      .card.user-account-card
+        .card-image
+          %figure.image.is-4by3
+            = image_tag user_avatar(current_user.avatar), alt: 'Profile picture'
+        .card-content
+          .media
+            .media-left
+              %figure.image.is-48x48
+                = image_tag user_thumbnail(current_user.avatar), alt: 'Thumbnail profile picture'
+            .media-content
+              %p.title.is-4= full_name
+              %p.subtitle.is-6= current_user.email
+            .media-right
+              = link_to 'Edit', edit_user_path(current_user), class: 'button is-black is-outlined'
