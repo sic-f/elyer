@@ -1,17 +1,17 @@
 Given(/^I am on the home page$/) do
-  visit '/'
+  visit_home_page
 end
 
 Given(/^user is on the home page$/) do
-  step 'I am on the home page'
+  visit_home_page
 end
 
 Given(/^I am on the sign up page$/) do
-  visit '/signup'
+  visit_sign_up_page
 end
 
 Given(/^I am on the sign in page$/) do
-  visit '/login'
+  visit_login_page
 end
 
 And(/^I click on "([^"]*)" link$/) do |link|
@@ -27,13 +27,11 @@ And(/^I click on "([^"]*)" button$/) do |button|
 end
 
 Given(/^I am signed in$/) do
-  user = create :user
-  visit root_path as: user
+  login
 end
 
 Given(/^a user "([^"]*)" is signed in$/) do |user|
-  user = create :user, first_name: user.split.first, last_name: user.split.last
-  sign_in_as user
+  log_in user
 end
 
 Then(/^I should be on the sign up page$/) do
