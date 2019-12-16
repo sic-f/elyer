@@ -1,9 +1,3 @@
-require_relative '../support/attachments_helper'
-require_relative '../support/sign_in_helpers'
-
-include AttachmentsHelper
-include SignInHelpers
-
 Then(/^I should be on the place submission page$/) do
   assert_selector 'form#new_place', count: 1
 end

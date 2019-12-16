@@ -13,3 +13,5 @@ module AttachmentsHelper
     { io: File.open(Rails.root.join(image_path)), filename: 'test_image.jpg' }
   end
 end
+
+World AttachmentsHelper
