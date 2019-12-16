@@ -41,7 +41,19 @@
           %p.help.is-danger.user-password= @user.errors.messages[:password].first
 
       .field
-        %div
+        .file.is-small.has-name
+          %label.file-label
+            .control
+              = form.file_field :avatar, class: 'file-input'
+              %span.file-cta
+                %span.file-icon
+                  %i.fas.fa-cloud-upload-alt
+                %span.file-label Upload avatar
+              = has_avatar? current_user do
+                %span.file-name.is-centered
+                  = current_user.avatar.filename
+
+      .field
         .control
           .level
             .level-left

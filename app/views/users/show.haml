@@ -6,12 +6,12 @@
       .card.user-account-card
         .card-image
           %figure.image.is-4by3
-            = image_tag 'no_image', alt: 'Profile picture'
+            = image_tag user_avatar(current_user.avatar), alt: 'Profile picture'
         .card-content
           .media
             .media-left
               %figure.image.is-48x48
-                = image_tag 'no_image', alt: 'Thumbnail profile picture'
+                = image_tag user_thumbnail(current_user.avatar), alt: 'Thumbnail profile picture'
             .media-content
               %p.title.is-4= full_name
               %p.subtitle.is-6= current_user.email
