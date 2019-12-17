@@ -3,7 +3,7 @@
     %header.card-header
       %p.card-header-title.has-text-primary.is-unselectable #{place.name}
       = link_to 'More Details', place,
-        class: 'card-header-icon has-text-info is-size-7-mobile has-text-weight-bold'
+        class: 'card-header-icon has-text-info is-size-7-mobile has-text-weight-bold place-more-details'
       - if authorized_to(:edit?, place)
         = link_to edit_place_path(place), class: 'card-header-icon edit-place-link',
           'aria-label' => 'more-options' do

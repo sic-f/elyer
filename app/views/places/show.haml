@@ -45,6 +45,7 @@
             .box
               %figure.image.is-clickable
                 = image_tag photo.photo.variant(resize: '200x200'), class: 'place-image', data: { image: url_for(photo.photo) }
+              = link_to 'Add description', 'javascript:void(0);', class: 'has-text-centered is-size-7'
     - else
       .container
         %article.message.is-link

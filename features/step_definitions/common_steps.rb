@@ -34,11 +34,11 @@ Given(/^I am signed in$/) do
   login
 end
 
-Given(/^a user "([^"]*)" is signed in$/) do |user|
+Given(/^user "([^"]*)" is signed in$/) do |user|
   log_in user
 end
 
-Given(/^a user "([^"]*)" is signed in and is on the home page$/) do |user|
+Given(/^user "([^"]*)" is signed in and is on the home page$/) do |user|
   signed_in_on_homepage user
 end
 

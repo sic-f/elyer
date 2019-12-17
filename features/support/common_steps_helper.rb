@@ -26,6 +26,12 @@ module CommonSteps
     visit_home_page
   end
 
+  def log_in_and_create_place(name:, place:)
+    @user  = create_user_from name
+    @place = create_place_with_user_from place: place, user: @user
+    sign_in_as @user
+  end
+
   private
 
   def create_user_from(name)
@@ -33,6 +39,10 @@ module CommonSteps
     last_name  = name.split.last
 
     create :user, first_name: first_name, last_name: last_name
+  end
+
+  def create_place_with_user_from(place:, user:)
+    create :place, name: place, user: user
   end
 end
 
