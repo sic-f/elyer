@@ -1,8 +1,8 @@
 class Place < ApplicationRecord
-  belongs_to :user
+  has_one :main_photo
+  has_many :photos
 
-  has_one_attached :main_photo
-  has_many_attached :images
+  belongs_to :user
 
   validates :name, :address, presence: true
 end
