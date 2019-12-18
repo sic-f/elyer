@@ -11,7 +11,9 @@ Rails.application.routes.draw do
              controller: 'clearance/passwords',
              only: %i[create edit update]
 
-    resources :places, only: %i[new create show edit update destroy], shallow: true
+    resources :places, only: %i[new create show edit update destroy], shallow: true do
+      resources :images, only: %i[show create], shallow: true
+    end
   end
 
   resource :session, controller: 'clearance/sessions', only: [:create]
