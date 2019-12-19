@@ -7,10 +7,6 @@ Feature: Pages
     Given I am on the home page
     Then I should see the navigation bar
 
-  Scenario: Side navigation menu
-    Given I am on the home page
-    Then I should see the side navigation menu
-
   Scenario: Index page has no places posted
     Given I am on the home page
     Then I should see no places posted yet
