@@ -5,9 +5,10 @@ class PlacesHelperTest < ActionView::TestCase
   include AttachmentsHelper
 
   test '#place_main_photo' do
-    place = build :place
+    main_photo = build :main_photo
+    place      = build :place, main_photo: main_photo
 
-    place.main_photo.attach local_file
+    place.main_photo.image.attach local_file
 
     assert_kind_of ActiveStorage::Variant, place_main_photo(place.main_photo)
   end

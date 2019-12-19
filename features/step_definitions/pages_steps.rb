@@ -4,7 +4,7 @@ Given(/^I am on the home page and places were already submitted$/) do
 end
 
 Then(/^I should see the navigation bar$/) do
-  assert_selector 'nav.navbar', text: 'Balai'
+  assert_selector 'nav.navbar > .navbar-brand'
 end
 
 Then(/^I should see the side navigation menu$/) do

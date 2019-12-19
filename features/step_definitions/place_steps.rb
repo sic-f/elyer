@@ -15,8 +15,8 @@ Then(/^I fill in the required fields to submit a place$/) do
   fill_in 'place[mobile]', with: '09954636990'
   fill_in 'place[landline]', with: '(02) 952-5463'
   fill_in 'place[email]', with: 'sabang@example.com'
-  attach_file 'place[main_photo]', image_upload_file, visible: false
-  attach_file 'place[images][]', image_upload_file, visible: false
+  attach_file 'place[main_photo_attributes][image]', image_upload_file, visible: false
+  attach_file 'place[photos][]', image_upload_file, visible: false
 end
 
 Then(/^I should be on the place page$/) do
@@ -32,8 +32,8 @@ When(/^I fill in the required fields with blank values$/) do
   fill_in 'place[mobile]', with: '09954636990'
   fill_in 'place[landline]', with: '(02) 952-5463'
   fill_in 'place[email]', with: 'sabang@example.com'
-  attach_file 'place[main_photo]', image_upload_file, visible: false
-  attach_file 'place[images][]', image_upload_file, visible: false
+  attach_file 'place[main_photo_attributes][image]', image_upload_file, visible: false
+  attach_file 'place[photos][]', image_upload_file, visible: false
 end
 
 Then(/^I should still be on the page submission page with error messages$/) do

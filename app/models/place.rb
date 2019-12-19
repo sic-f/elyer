@@ -1,8 +1,11 @@
 class Place < ApplicationRecord
+  has_one :main_photo, dependent: :destroy
+  has_many :photos, dependent: :destroy
+
   belongs_to :user
 
-  has_one_attached :main_photo
-  has_many_attached :images
-
   validates :name, :address, presence: true
+
+  accepts_nested_attributes_for :main_photo
+  accepts_nested_attributes_for :photos
 end

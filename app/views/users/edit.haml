@@ -1,5 +1,5 @@
 %h3.title.is-3 #{full_name}
-
+%h5.subtitle.is-5 Update your info
 %section.section
   .container
     = form_with model: @user, local: true, class: 'user-authentication-form' do |form|
@@ -31,7 +31,9 @@
           %p.help.is-danger.user-email= @user.errors.messages[:email].first
 
       .field
-        = form.label :password, class: %i[label]
+        %label.label{ for: 'user_password' }
+          Enter new password
+          %span.is-size-7.has-text-primary (optional)
         .control.has-icons-left
           = form.text_field :password, type: :password, class: :input,
             placeholder: :password

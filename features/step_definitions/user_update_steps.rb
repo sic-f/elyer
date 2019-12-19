@@ -31,5 +31,4 @@ Then(/^user "([^"]*)" receives error messages and should still be on the edit ac
   assert_selector '.help.is-danger.user-first-name', text: "can't be blank"
   assert_selector '.help.is-danger.user-last-name', text: "can't be blank"
   assert_selector '.help.is-danger.user-email', text: 'is invalid'
-  assert_selector '.help.is-danger.user-password', text: "can't be blank"
 end

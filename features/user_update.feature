@@ -5,7 +5,7 @@ Feature: User update
 
   Background:
     Given a user "Barb Inserto" is signed in and is on the home page
-    When user clicks on "Profile" link
+    When user clicks on "Account" link
     And user clicks on "Edit" link
 
   Scenario: Successfuly update account details

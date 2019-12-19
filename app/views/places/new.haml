@@ -2,20 +2,21 @@
 %section.section
   .container
     = form_with model: [@user, @place], id: :new_place, local: true do |form|
-      .field.is-horizontal
-        .field-label.is-large
-          = form.label :main_photo, class: 'label'
-        .field-body
-          .file.is-info.is-boxed
-            %label.file-label
-              = form.file_field :main_photo, class: 'file-input'
-              %span.file-cta
-                %span.file-icon
-                  %i.fas.fa-cloud-upload-alt
-                %span.file-label Upload main photo
-              = has_main_photo?(@place) do
-                %span.file-name.is-centered
-                  = @place.main_photo.filename
+      = form.fields_for :main_photo, @main_photo do |main_photo_form|
+        .field.is-horizontal
+          .field-label.is-large
+            = main_photo_form.label :main_photo, class: 'label'
+          .field-body
+            .file.is-info.is-boxed
+              %label.file-label
+                = main_photo_form.file_field :image, class: 'file-input'
+                %span.file-cta
+                  %span.file-icon
+                    %i.fas.fa-cloud-upload-alt
+                  %span.file-label Upload main photo
+                = has_main_photo?(@place) do
+                  %span.file-name.is-centered
+                    = @place.main_photo.image.filename
 
       .field.is-horizontal
         .field-label.is-normal
@@ -74,13 +75,13 @@
 
       .field.is-horizontal
         .field-label.is-medium
-          = form.label :images, 'Upload more images', class: 'label'
+          = form.label :photos, 'Upload more images', class: 'label'
         .field-body
           .field
             .control
               .file.is-warning.is-boxed
                 %label.file-label
-                  = form.file_field :images, class: 'file-input', multiple: true
+                  = form.file_field :photos, class: 'file-input', multiple: true
                   %span.file-cta
                     %span.file-icon
                       %i.fas.fa-cloud-upload-alt

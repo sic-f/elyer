@@ -6,14 +6,17 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @user  = User.find(params[:user_id])
+    @user       = User.find(params[:user_id])
     authorize @user, policy_class: PlacePolicy
-    @place = Place.new
+    @place      = Place.new
+    @main_photo = @place.build_main_photo
   end
 
   def create
     @user  = current_user
     @place = @user.places.new(place_params)
+
+    attach_photos_to_place
 
     if @place.save
       flash[:success] = 'Successfully submitted place!'
@@ -70,7 +73,17 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
-                                    :main_photo,
-                                    images: [])
+                                    :photos,
+                                    main_photo_attributes: [:image])
+    end
+
+    def attach_photos_to_place
+      photos_in_params.each do |photo|
+        @place.photos.build.photo.attach photo
+      end
+    end
+
+    def photos_in_params
+      params[:place][:photos]
     end
 end
