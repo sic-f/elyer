@@ -1,4 +1,4 @@
 class Photo < Image
-  has_many_attached :images
+  has_one_attached :photo
   belongs_to :place
 end
