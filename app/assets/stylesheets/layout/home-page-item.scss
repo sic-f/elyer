@@ -2,4 +2,10 @@
   display: flex;
   justify-content: center;
   margin-bottom: 8rem;
+
+  @media only screen and (min-width: 768px) {
+    > .card {
+      width: 50%;
+    }
+  }
 }
