@@ -5,6 +5,7 @@ class ImagesController < ApplicationController
   end
 
   def edit
+    authorize @image, policy_class: ImagePolicy
   end
 
   def update
@@ -13,7 +14,7 @@ class ImagesController < ApplicationController
     authorize image, policy_class: ImagePolicy
 
     if image.update photo_params
-      flash[:success] = 'Added caption.'
+      flash[:success] = 'Update successful!'
       redirect_to image_url image
     else
       flash[:danger] = 'Unexpected error.'

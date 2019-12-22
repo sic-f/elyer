@@ -1,0 +1,10 @@
+= form_with model: @image, url: image_path(@image), local: true do |form|
+  .field
+    = form.label :image, class: :label
+    .control
+      = form.text_field :caption, class: :input
+
+  .field
+    .control
+      = form.submit 'Save', class: 'button is-info'
+

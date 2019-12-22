@@ -1,0 +1,6 @@
+%figure.image.is-16by9
+  = image_tag @image.photo
+%p= @image.caption
+
+- if images_authorized_to(:edit?, @image)
+  = link_to 'Edit', edit_image_path, class: 'edit-photo-link'
