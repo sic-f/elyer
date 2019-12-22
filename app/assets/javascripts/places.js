@@ -8,6 +8,8 @@ document.addEventListener('turbolinks:load', function() {
   var modalClose        = document.getElementsByClassName('modal-close')[0];
   var modalImageSrc     = document.querySelectorAll('#place-images-modal img')[0];
   var modalOpenInNewTab = document.querySelectorAll('.modal-content a')[0];
+  var modalContent      = document.querySelectorAll('.modal-content')[0];
+  var help              = document.createElement('small');
   var placeImages       = Array.from(document.getElementsByClassName('place-image'));
   var body              = document.getElementsByTagName('body')[0];
 
@@ -19,6 +21,12 @@ document.addEventListener('turbolinks:load', function() {
       modal.classList.add('is-active');
       modalImageSrc.setAttribute('src', image);
       modalOpenInNewTab.setAttribute('href', image);
+
+      // Add instruction below the image
+      help.setAttribute('class', 'has-text-light');
+      help.innerHTML = 'Click to view in full size';
+      modalContent.classList.add('has-text-centered');
+      modalContent.appendChild(help);
 
       // Add closing of modal when clicked on the background outside the image
       modalBackground.addEventListener('click', function() {
