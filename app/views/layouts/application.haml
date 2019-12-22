@@ -8,7 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{ src: 'https://kit.fontawesome.com/f89a405bc5.js' }
-  %body.has-navbar-fixed-top
+  %body.has-navbar-fixed-top{ data: { controller: controller_path, action: action_name } }
     - flash.each do |message_type, message|
       = content_tag :div, class: "notification is-#{message_type} has-text-centered adjust-margin-for-fixed-navbar" do
         = message

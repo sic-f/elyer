@@ -4,7 +4,7 @@ Feature: User update
   So I can have a record of up to date details of my account
 
   Background:
-    Given a user "Barb Inserto" is signed in and is on the home page
+    Given user "Barb Inserto" is signed in and is on the home page
     When user clicks on "Account" link
     And user clicks on "Edit" link
 

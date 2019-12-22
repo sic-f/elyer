@@ -12,4 +12,12 @@ class PhotoTest < ActiveSupport::TestCase
 
     assert_equal 'Photo', photo.type
   end
+
+  test '#user' do
+    user  = build_stubbed :user
+    place = build_stubbed :place, user: user
+    photo = build_stubbed :photo, place: place
+
+    assert_equal photo.user, user
+  end
 end

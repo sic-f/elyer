@@ -38,13 +38,14 @@
   .column
     .title.is-5.has-text-primary More Images
     - if @place.photos.any?
-      .subtitle.is-7.has-text-info click images to view
+      .subtitle.is-7.has-text-info click images to view comments & descriptions
       .columns.is-multiline.is-vcentered
         - @place.photos.each do |photo|
           .column.is-one-third
             .box
               %figure.image.is-clickable
-                = image_tag photo.photo.variant(resize: '200x200'), class: 'place-image', data: { image: url_for(photo.photo) }
+                = link_to image_path(photo) do
+                  = image_tag photo.photo.variant(resize: '200x200')
     - else
       .container
         %article.message.is-link
