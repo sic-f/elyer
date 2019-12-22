@@ -29,7 +29,18 @@ module CommonSteps
   def log_in_and_create_place(name:, place:)
     @user  = create_user_from name
     @place = create_place_with_user_from place: place, user: @user
+    @photo = create :photo, place: @place
+
+    attach_image
+
     sign_in_as @user
+  end
+
+  def create_place_with_photo_from(place)
+    @place = create :place
+    @photo = create :photo, place: @place
+
+    attach_image
   end
 
   private
@@ -43,6 +54,11 @@ module CommonSteps
 
   def create_place_with_user_from(place:, user:)
     create :place, name: place, user: user
+  end
+
+  def attach_image
+    @place.photos.first.photo.attach local_file
+    @place.save
   end
 end
 

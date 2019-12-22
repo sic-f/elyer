@@ -1,5 +1,6 @@
 When(/^user is viewing an image$/) do
-  visit image_path @image
+  visit image_path @photo
+  assert_current_path "/images/#{@photo.to_param}"
 end
 
 Given(/^user "([^"]*)" is signed in and is on the home page and has submitted a place called "([^"]*)" with an image$/) do |user, place|
@@ -13,4 +14,14 @@ end
 
 And(/^user fills in the description box$/) do
   fill_in '.column > .add-place-description', with: 'Add description'
+end
+
+When(/^user enters description "([^"]*)" for that image$/) do |caption|
+  enter_caption_for_photo_with caption
+end
+
+Then(/^user should see "([^"]*)" below the image$/) do |caption|
+  visit image_path @photo
+  assert_current_path "/images/#{@photo.to_param}"
+  assert_selector 'p', text: caption
 end
