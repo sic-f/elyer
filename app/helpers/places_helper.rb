@@ -12,7 +12,11 @@ module PlacesHelper
   end
 
   def place_main_photo(main_photo)
-    main_photo&.image&.attached? ? main_photo.image.variant(resize: '400x300') : url_for('no_image.png')
+    main_photo&.image&.attached? ? main_photo.image.variant(resize_to_limit: [1024, 768]) : url_for('no_image.png')
+  end
+
+  def place_main_photo_natural(main_photo)
+    main_photo&.image&.attached? ? main_photo.image : url_for('no_image.png')
   end
 
   private
