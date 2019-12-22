@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :photo do
-    caption { FFaker::HTMLIpsum.fancy_string }
+    caption { }
     place
   end
 end

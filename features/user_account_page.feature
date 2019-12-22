@@ -4,7 +4,7 @@ Feature: User account page
   So that I can update my personal details
 
   Background:
-    Given a user "Janita Magpantayg" is signed in and is on the home page
+    Given user "Janita Magpantayg" is signed in and is on the home page
 
   Scenario: Account link on home page
     When user clicks on "Account" link
