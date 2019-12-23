@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Clearance::User
 
   has_many :places
+  has_many :comments, dependent: :destroy
 
   has_one_attached :avatar
 
