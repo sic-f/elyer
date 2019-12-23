@@ -1,0 +1,11 @@
+%article.media
+  %figure.media-left
+    %p.image.is-64x64
+      = image_tag user_thumbnail(comment.user_avatar)
+  .media-content
+    .content
+      %p.comment-content
+        %strong= full_name_for(comment.user)
+        %small= time_ago_in_words Time.now
+        %br/
+        = comment.content

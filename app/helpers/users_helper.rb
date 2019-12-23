@@ -3,6 +3,10 @@ module UsersHelper
     "#{current_user.first_name} #{current_user.last_name}"
   end
 
+  def full_name_for(user)
+    "#{user.first_name} #{user.last_name}"
+  end
+
   def has_avatar?(resource, &block)
     capture &block if resource.avatar.attached?
   end
