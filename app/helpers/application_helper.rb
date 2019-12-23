@@ -3,7 +3,7 @@ module ApplicationHelper
     capture &block if resource.main_photo&.image&.attached?
   end
 
-  def authorized_to(operation, resource)
+  def authorized_to?(operation, resource)
     signed_in? && policy(resource).send(operation)
   end
 end
