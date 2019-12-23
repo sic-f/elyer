@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_01_07_130054) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,21 +38,28 @@ ActiveRecord::Schema.define(version: 2021_01_07_130054) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+<<<<<<< HEAD
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+=======
+>>>>>>> :wrench::sparkles::tada: Run migration to create Comment
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.bigint "user_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+=======
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+>>>>>>> :wrench::sparkles::tada: Run migration to create Comment
   end
 
   create_table "images", force: :cascade do |t|
