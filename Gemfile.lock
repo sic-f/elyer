@@ -158,7 +158,7 @@ GEM
     fancy_irb (1.2.1)
       paint (>= 0.9, < 3.0)
       unicode-display_width (~> 1.1)
-    ffaker (2.13.0)
+    ffaker (2.15.0)
     ffi (1.12.2)
     formatador (0.2.5)
     gherkin (5.1.0)
