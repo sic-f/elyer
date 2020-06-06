@@ -394,7 +394,7 @@ GEM
       semantic_range (>= 2.3.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     wirb (2.2.1)
       paint (>= 0.9, < 3.0)
     xpath (3.2.0)
