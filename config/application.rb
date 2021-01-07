@@ -18,5 +18,9 @@ module Elyer
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.to_prepare do
+      Clearance::SessionsController.layout 'clearance_authentication'
+    end
   end
 end
