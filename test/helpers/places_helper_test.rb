@@ -10,7 +10,7 @@ class PlacesHelperTest < ActionView::TestCase
 
     place.main_photo.image.attach local_file
 
-    assert_kind_of ActiveStorage::Variant, place_main_photo(place.main_photo)
+    assert_kind_of ActiveStorage::VariantWithRecord, place_main_photo(place.main_photo)
   end
 
   test '#place_main_photo place with no main photo' do
