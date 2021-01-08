@@ -1,5 +1,5 @@
-%h1.title.is-marginless.has-text-primary Submit a place
-%section.section
+h1.title.is-marginless.has-text-primary Submit a place
+section.section
   .container
     = form_with model: [@user, @place], id: :new_place, local: true do |form|
       = form.fields_for :main_photo, @main_photo do |main_photo_form|
@@ -8,14 +8,14 @@
             = main_photo_form.label :main_photo, class: 'label'
           .field-body
             .file.is-info.is-boxed
-              %label.file-label
+              label.file-label
                 = main_photo_form.file_field :image, class: 'file-input'
-                %span.file-cta
-                  %span.file-icon
-                    %i.fas.fa-cloud-upload-alt
-                  %span.file-label Upload main photo
+                span.file-cta
+                  span.file-icon
+                    i.fas.fa-cloud-upload-alt
+                  span.file-label Upload main photo
                 = has_main_photo?(@place) do
-                  %span.file-name.is-centered
+                  span.file-name.is-centered
                     = @place.main_photo.image.filename
 
       .field.is-horizontal
@@ -24,9 +24,12 @@
         .field-body
           .field
             .control
-              = form.text_field :name, placeholder: 'Name of the place', class: 'input', autocomplete: 'off'
+              = form.text_field :name,
+                                placeholder: 'Name of the place',
+                                class: 'input',
+                                autocomplete: 'off'
             - if @place.errors.messages[:name].present?
-              %p.help.is-danger A name is needed.
+              p.help.is-danger A name is needed.
 
       .field.is-horizontal
         .field-label.is-normal
@@ -34,8 +37,10 @@
         .field-body
           .field
             .control
-              = form.text_area :description, placeholder: 'Describe the place', class: 'textarea'
-            %p.help.is-info Tips, best thing about this place, bad reviews, etc.
+              = form.text_area :description,
+                                placeholder: 'Describe the place',
+                                class: 'textarea'
+            p.help.is-info Tips, best thing about this place, bad reviews, etc.
 
       .field.is-horizontal
         .field-label.is-normal
@@ -43,9 +48,11 @@
         .field-body
           .field
             .control
-              = form.text_field :address, placeholder: 'Location of the place', class: 'input'
+              = form.text_field :address,
+                                placeholder: 'Location of the place',
+                                class: 'input'
             - if @place.errors.messages[:address].present?
-              %p.help.is-danger You need to provide an address or location.
+              p.help.is-danger You need to provide an address or location.
 
       .field.is-horizontal
         .field-label.is-normal
@@ -53,8 +60,10 @@
         .field-body
           .field
             .control
-              = form.phone_field :mobile, placeholder: 'Mobile number', class: 'input'
-            %p.help.is-info Separate numbers with commas (,)
+              = form.phone_field :mobile,
+                                 placeholder: 'Mobile number',
+                                 class: 'input'
+            p.help.is-info Separate numbers with commas (,)
 
       .field.is-horizontal
         .field-label.is-normal
@@ -62,8 +71,10 @@
         .field-body
           .field
             .control
-              = form.telephone_field :landline, placeholder: 'Landline number', class: 'input'
-            %p.help.is-info Separate numbers with commas (,)
+              = form.telephone_field :landline,
+                                     placeholder: 'Landline number',
+                                     class: 'input'
+            p.help.is-info Separate numbers with commas (,)
 
       .field.is-horizontal
         .field-label.is-normal
@@ -80,12 +91,12 @@
           .field
             .control
               .file.is-warning.is-boxed
-                %label.file-label
+                label.file-label
                   = form.file_field :photos, class: 'file-input', multiple: true
-                  %span.file-cta
-                    %span.file-icon
-                      %i.fas.fa-cloud-upload-alt
-                    %span.file-label Upload images
+                  span.file-cta
+                    span.file-icon
+                      i.fas.fa-cloud-upload-alt
+                    span.file-label Upload images
           .field.is-grouped.is-grouped-right
             .control
               = link_to 'Go Back to Home', root_path, class: 'button is-info'
