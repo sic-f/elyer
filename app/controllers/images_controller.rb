@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   before_action :get_photo, only: %i[show edit]
 
   def show
+    @comments = @image.comments.order(created_at: :asc)
   end
 
   def edit

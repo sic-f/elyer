@@ -9,7 +9,7 @@ section.section
             |  Back to place
         - if image_authorized_to(:edit?, @image)
           = link_to edit_image_path, class: 'card-header-icon',
-            'aria-label': 'more-options' do
+                                     'aria-label': 'more-options' do
             span.icon
               - if @image.caption?
                 i.fas.fa-pen-square aria-hidden=true
@@ -29,3 +29,25 @@ section.section
                     edit_image_path,
                     class: 'card-footer-item edit-photo-link'
 
+- unless @comments.blank?
+  section.section
+    .container
+      = render @comments
+
+section.section
+  .container
+    article.media
+      figure.media-left.is-size-2
+        span.icon.is-large.has-text-success
+          i.fas.fa-comments
+      .media-content
+        = form_with model: [@image, Comment.new],
+                    url: image_comments_path(@image) do |form|
+          .field
+            .control
+              = form.text_area :content,
+                               class: :textarea,
+                               placeholder: 'Add a comment...'
+          .field
+            .control
+              = form.submit 'Post comment', class: 'button is-primary'

@@ -3,6 +3,10 @@ module UsersHelper
     "#{current_user.first_name} #{current_user.last_name}"
   end
 
+  def full_name_for(user)
+    "#{user.first_name} #{user.last_name}"
+  end
+
   def has_avatar?(resource, &block)
     capture &block if resource.avatar.attached?
   end
@@ -12,6 +16,8 @@ module UsersHelper
   end
 
   def user_thumbnail(avatar)
-    avatar.attached? ? avatar.variant(resize_to_limit: [100, 100]) : url_for('no_image.png')
+    avatar.attached?  ?
+      avatar.variant(resize_to_limit: [64, 64]) :
+      url_for('no_image.png')
   end
 end

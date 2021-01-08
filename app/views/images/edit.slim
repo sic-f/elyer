@@ -22,11 +22,11 @@ section.section.is-paddingless
 
       .field.is-grouped.is-grouped-centered
         .control
+          = form.submit 'Save', class: 'button is-info is-pulled-right'
+        .control
           = link_to 'Back',
                     'javascript:void(0);',
                     class: 'button is-primary',
                     onclick: 'window.history.back()'
-        .control
-          = form.submit 'Save', class: 'button is-info is-pulled-right'
 
 
