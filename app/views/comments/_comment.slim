@@ -5,8 +5,8 @@ article.media
   .media-content
     .content
       p.comment-content
-        strong= full_name_for(comment.user)
-        small= time_ago_in_words Time.now
+        strong = full_name_for(comment.user)
+        small.ml-2 = time_ago_in_words Time.now
         br/
         = comment.content
 
@@ -15,7 +15,7 @@ article.media
         .level-left
           = link_to 'Delete',
                     comment,
-                    class: 'level-item help is-marginless',
+                    class: 'level-item help is-marginless mr-2',
                     method: :delete,
                     data: { confirm: 'Delete comment?' }
 
