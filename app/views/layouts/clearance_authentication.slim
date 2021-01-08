@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/
+    title Welcome to Elyer
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application',
+                          media: 'all',
+                          'data-turbolinks-track': 'reload'
+    script src='https://kit.fontawesome.com/f89a405bc5.js'
+  body
+    - flash.each do |message_type, message|
+      - alert_type = message_type == 'alert' ? :danger : message_type
+      = content_tag :div,
+        class: "notification is-#{alert_type} has-text-centered \
+                is-marginless" do
+        = message
+    = yield
