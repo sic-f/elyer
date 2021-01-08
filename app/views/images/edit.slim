@@ -3,7 +3,7 @@ header.section.is-paddingless.edit-image-box
     = link_to place_path(@image.place) do
       span.icon
         i.fas.fa-arrow-circle-left
-      | Back to place
+      |  Back to place
 
 section.section
   .container
@@ -28,3 +28,5 @@ section.section.is-paddingless
                     onclick: 'window.history.back()'
         .control
           = form.submit 'Save', class: 'button is-info is-pulled-right'
+
+
