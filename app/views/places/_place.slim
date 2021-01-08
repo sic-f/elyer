@@ -1,0 +1,31 @@
+article.home-page-item
+  article.card
+    header.card-header
+      p.card-header-title.has-text-primary.is-unselectable = place.name
+      = link_to 'More Details',
+                place,
+                class: "card-header-icon has-text-info is-size-7-mobile \
+                        has-text-weight-bold place-more-details"
+      - if authorized_to(:edit?, place)
+        = link_to edit_place_path(place),
+                  class: 'card-header-icon edit-place-link',
+                  'aria-label': 'more-options' do
+          span.icon
+            i.fas.fa-edit aria-hidden=true EDIT
+    .card-image
+      = link_to place do
+        figure.image
+          = image_tag place_main_photo(place.main_photo)
+    .card-content
+      h1.title.has-text-grey-light = place.name
+      h2.subtitle = place.address
+      .content = simple_format place.description
+    .card-footer
+      p.card-footer-item.has-text-primary
+        | Mobile:&nbsp#{link_to place.mobile, "tel:#{place.mobile}"}
+      p.card-footer-item.has-text-warning
+        | Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
+      p.card-footer-item.has-text-info
+        | Email:&nbsp#{mail_to place.email}
+      = render_only_on_home_page do
+        = link_to 'More images', place, class: 'card-footer-item'
