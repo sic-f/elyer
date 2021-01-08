@@ -5,10 +5,9 @@
       header.card-header
         span.card-header-title
           = link_to root_path do
-<<<<<<< HEAD:app/views/places/show.slim
             span.icon
               i.fas.fa-arrow-circle-left
-        - if authorized_to(:destroy?, @place)
+        - if authorized_to?(:destroy?, @place)
           = link_to @place,
                     class: 'card-header-icon is-paddingless trash-can-link',
                     'aria-label': 'more-options',
@@ -16,29 +15,13 @@
                     data: { confirm: "Are you sure you want to delete #{@place.name}?" } do
             span.icon
               i.fas.fa-trash aria-hidden=true
-        - if authorized_to(:edit?, @place)
+        - if authorized_to?(:edit?, @place)
           = link_to edit_place_path(@place), 
                     class: 'card-header-icon edit-place-link',
                     'aria-label': 'more-options' do
             span.icon
               i.fas.fa-edit aria-hidden=true
             | EDIT
-=======
-            %span.icon
-              %i.fas.fa-arrow-circle-left
-        - if authorized_to?(:destroy?, @place)
-          = link_to @place, class: 'card-header-icon is-paddingless trash-can-link',
-            'aria-label' => 'more-options', method: :delete,
-            data: { confirm: "Are you sure you want to delete #{@place.name}?" } do
-            %span.icon
-              %i.fas.fa-trash{ 'aria-hidden': true }
-        - if authorized_to?(:edit?, @place)
-          = link_to edit_place_path(@place), class: 'card-header-icon edit-place-link',
-            'aria-label' => 'more-options' do
-            %span.icon
-              %i.fas.fa-edit{ 'aria-hidden': true }
-            EDIT
->>>>>>> :sparkles: Implement deleting a comment:app/views/places/show.haml
       .card-image
         figure.image.is-clickable
           = image_tag place_main_photo(@place.main_photo),

@@ -6,7 +6,7 @@ article.home-page-item
                 place,
                 class: "card-header-icon has-text-info is-size-7-mobile \
                         has-text-weight-bold place-more-details"
-      - if authorized_to(:edit?, place)
+      - if authorized_to?(:edit?, place)
         = link_to edit_place_path(place),
                   class: 'card-header-icon edit-place-link',
                   'aria-label': 'more-options' do
