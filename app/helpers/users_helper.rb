@@ -16,6 +16,8 @@ module UsersHelper
   end
 
   def user_thumbnail(avatar)
-    avatar.attached? ? avatar.variant(resize_to_limit: [100, 100]) : url_for('no_image.png')
+    avatar.attached?  ?
+      avatar.variant(resize_to_limit: [64, 64]) :
+      url_for('no_image.png')
   end
 end

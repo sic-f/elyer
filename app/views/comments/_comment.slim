@@ -1,13 +1,13 @@
 article.media
   figure.media-left
-    p.image.is-64x64
+    p.image
       = image_tag user_thumbnail(comment.user_avatar)
   .media-content
     .content
       p.comment-content
         strong = full_name_for(comment.user)
         small.ml-2 = time_ago_in_words Time.now
-        br/
+        br
         = comment.content
 
     - if authorized_to_perform_operations_on? comment

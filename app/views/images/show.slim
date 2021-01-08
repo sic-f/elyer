@@ -9,7 +9,7 @@ section.section
             |  Back to place
         - if image_authorized_to(:edit?, @image)
           = link_to edit_image_path, class: 'card-header-icon',
-            'aria-label': 'more-options' do
+                                     'aria-label': 'more-options' do
             span.icon
               - if @image.caption?
                 i.fas.fa-pen-square aria-hidden=true

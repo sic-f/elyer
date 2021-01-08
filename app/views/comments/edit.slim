@@ -1,0 +1,18 @@
+h1.title.is-marginless
+  | Edit comment
+  section.section
+    .container
+      article.media
+        figure.media-left.is-size-2
+          span.icon.is-large.has-text-success
+            i.fas.fa-comments
+        .media-content
+          = form_with model: @comment do |form|
+            .field
+              .control
+                = form.text_area :content,
+                                 class: :textarea,
+                                 placeholder: 'Add a comment...'
+            .field
+              .control
+                = form.submit 'Post comment', class: 'button is-primary'

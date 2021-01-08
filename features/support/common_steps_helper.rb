@@ -17,8 +17,8 @@ module CommonSteps
   end
 
   def log_in(name)
-    user = create_user_from name
-    sign_in_as user
+    @user = create_user_from name
+    sign_in_as @user
   end
 
   def signed_in_on_homepage(name)

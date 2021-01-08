@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     resources :places, only: %i[new create show edit update destroy], shallow: true do
       resources :images, only: %i[show create edit update], shallow: true do
-        resources :comments, only: %i[create destroy], shallow: true
+        resources :comments, only: %i[create edit update destroy], shallow: true
       end
     end
 
