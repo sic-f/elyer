@@ -1,36 +1,39 @@
 - apply_padding = signed_in?
 .columns
   .column.is-one-third
-    %article.card
-      %header.card-header
-        %span.card-header-title
+    article.card
+      header.card-header
+        span.card-header-title
           = link_to root_path do
-            %span.icon
-              %i.fas.fa-arrow-circle-left
+            span.icon
+              i.fas.fa-arrow-circle-left
         - if authorized_to(:destroy?, @place)
-          = link_to @place, class: 'card-header-icon is-paddingless trash-can-link',
-            'aria-label' => 'more-options', method: :delete,
-            data: { confirm: "Are you sure you want to delete #{@place.name}?" } do
-            %span.icon
-              %i.fas.fa-trash{ 'aria-hidden': true }
+          = link_to @place,
+                    class: 'card-header-icon is-paddingless trash-can-link',
+                    'aria-label': 'more-options',
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete #{@place.name}?" } do
+            span.icon
+              i.fas.fa-trash aria-hidden=true
         - if authorized_to(:edit?, @place)
-          = link_to edit_place_path(@place), class: 'card-header-icon edit-place-link',
-            'aria-label' => 'more-options' do
-            %span.icon
-              %i.fas.fa-edit{ 'aria-hidden': true }
-            EDIT
+          = link_to edit_place_path(@place), 
+                    class: 'card-header-icon edit-place-link',
+                    'aria-label': 'more-options' do
+            span.icon
+              i.fas.fa-edit aria-hidden=true
+            | EDIT
       .card-image
-        %figure.image.is-clickable
+        figure.image.is-clickable
           = image_tag place_main_photo(@place.main_photo),
-            class: 'place-image',
-            data: { image: url_for(place_main_photo_natural(@place.main_photo)) }
+                      class: 'place-image',
+                      data: { image: url_for(place_main_photo_natural(@place.main_photo)) }
       .card-content
-        %h1.title.has-text-grey-light #{@place.name}
-        %h2.subtitle #{@place.address}
+        h1.title.has-text-grey-light #{@place.name}
+        h2.subtitle #{@place.address}
         .content
           #{simple_format @place.description}
 
-          %hr
+          hr
           .title.is-6 Mobile:&nbsp#{link_to @place.mobile, "tel:#{@place.mobile}"}
           .title.is-6 Landline:&nbsp#{link_to @place.landline, "tel:#{@place.landline}"}
           .title.is-6 Email:&nbsp#{mail_to @place.email}
@@ -43,12 +46,12 @@
         - @place.photos.each do |photo|
           .column.is-one-third
             .box
-              %figure.image.is-clickable
+              figure.image.is-clickable
                 = link_to image_path(photo) do
                   = image_tag photo.photo.variant(resize: '200x200')
     - else
       .container
-        %article.message.is-link
+        article.message.is-link
           .message-header
           .message-body No images yet
 

@@ -1,0 +1,32 @@
+header.section.is-paddingless.edit-image-box
+  .container
+    = link_to place_path(@image.place) do
+      span.icon
+        i.fas.fa-arrow-circle-left
+      |  Back to place
+
+section.section
+  .container
+    = image_tag @image.photo, class: 'box edit-image-box'
+
+section.section.is-paddingless
+  .container
+    = form_with model: @image,
+                url: image_path(@image),
+                local: true,
+                class: 'general-form' do |form|
+      .field
+        = form.label :'add description', class: :label
+        .control
+          = form.text_field :caption, class: :input
+
+      .field.is-grouped.is-grouped-centered
+        .control
+          = link_to 'Back',
+                    'javascript:void(0);',
+                    class: 'button is-primary',
+                    onclick: 'window.history.back()'
+        .control
+          = form.submit 'Save', class: 'button is-info is-pulled-right'
+
+

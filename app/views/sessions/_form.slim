@@ -6,18 +6,18 @@
     = form.label :email, class: %i[label has-text-light]
     .control.has-icons-left
       = form.text_field :email, type: :email, class: :input, placeholder: :email
-      %span.icon.is-small.is-left
-        %i.fas.fa-envelope
+      span.icon.is-small.is-left
+        i.fas.fa-envelope
 
   .field
     = form.label :password, class: %i[label has-text-light]
     .control.has-icons-left
       = form.text_field :password, type: :password, class: :input,
         placeholder: :password
-      %span.icon.is-small.is-left
-        %i.fas.fa-key
+      span.icon.is-small.is-left
+        i.fas.fa-key
 
   .field
-    %div
+    div
     .control
       = form.submit 'Sign in', class: 'button is-primary'
