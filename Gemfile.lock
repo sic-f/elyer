@@ -157,7 +157,6 @@ GEM
     email_validator (2.2.2)
       activemodel
     erubi (1.10.0)
-    erubis (2.7.0)
     every_day_irb (2.1.1)
       cd (~> 1.0)
     execjs (2.7.0)
@@ -189,18 +188,11 @@ GEM
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
-    haml-rails (2.0.1)
-      actionpack (>= 5.1)
-      activesupport (>= 5.1)
-      haml (>= 4.0.6, < 6.0)
-      html2haml (>= 1.0.1)
-      railties (>= 5.1)
+    haml2slim (0.4.7)
+      haml (>= 3.0)
+      nokogiri
+      ruby_parser
     hirb (0.7.3)
-    html2haml (2.2.0)
-      erubis (~> 2.7.0)
-      haml (>= 4.0, < 6)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -382,6 +374,13 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     spoon (0.0.6)
       ffi
     spring (2.1.1)
@@ -451,7 +450,7 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   guard
-  haml-rails (~> 2.0)
+  haml2slim
   image_processing (~> 1.2)
   irbtools
   listen (>= 3.0.5)
@@ -465,6 +464,7 @@ DEPENDENCIES
   rubocop
   sass-rails (>= 6)
   selenium-webdriver
+  slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
