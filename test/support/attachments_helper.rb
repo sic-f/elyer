@@ -8,7 +8,8 @@ module AttachmentsHelper
     Rails.root.join image_path
   end
 
-  # For attachments not coming from a web request (local files or downloaded files only)
+  # For attachments not coming from a web request
+  # (local files or downloaded files only)
   def local_file(image_path = 'test/support/apple.jpg')
     { io: File.open(Rails.root.join(image_path)), filename: 'test_image.jpg' }
   end
