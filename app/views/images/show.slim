@@ -1,0 +1,31 @@
+section.section
+  .container
+    .card
+      header.card-header
+        span.card-header-title
+          = link_to place_path(@image.place) do
+            span.icon
+              i.fas.fa-arrow-circle-left
+            Back to place
+        - if image_authorized_to(:edit?, @image)
+          = link_to edit_image_path, class: 'card-header-icon',
+            'aria-label': 'more-options' do
+            span.icon
+              - if @image.caption?
+                i.fas.fa-pen-square aria-hidden=true
+              - else
+                i.fas.fa-plus aria-hidden=true
+            description
+
+      .card-image
+        figure.image.is-16by9
+          = image_tag @image.photo
+      .card-content
+        .content
+          p.has-text-centered= @image.caption
+      footer.card-footer
+        - if image_authorized_to(:edit?, @image)
+          = link_to photo_edit_caption_label(@image),
+                    edit_image_path,
+                    class: 'card-footer-item edit-photo-link'
+
