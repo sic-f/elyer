@@ -88,7 +88,7 @@ jobs:
             chmod +x ./cc-test-reporter
       # run tests!
       - run:
-          name: Run Rspec in parallel
+          name: Run tests
           command: |
             ./cc-test-reporter before-build
             bundle exec cucumber
