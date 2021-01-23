@@ -49,6 +49,7 @@ group :development, :test do
   gem 'irbtools', require: 'irbtools/binding'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
