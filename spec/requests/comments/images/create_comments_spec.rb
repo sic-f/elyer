@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Comments authorization', type: :request do
+RSpec.describe 'Create comments', type: :request do
   context 'when not authenticated' do
     let(:image) { build_stubbed :photo }
     let(:params) do
