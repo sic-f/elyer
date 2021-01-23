@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment_and_image, only: %i[edit update destroy]
+  before_action :require_login
 
   def create
       image = Image.find params[:image_id]
