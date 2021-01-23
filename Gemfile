@@ -49,6 +49,7 @@ group :development, :test do
   gem 'irbtools', require: 'irbtools/binding'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -71,6 +72,7 @@ group :test do
   # gem 'capybara', '>= 2.15'
   gem 'minitest-reporters'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
