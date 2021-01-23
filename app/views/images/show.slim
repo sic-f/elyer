@@ -34,20 +34,21 @@ section.section
     .container
       = render @comments
 
-section.section
-  .container
-    article.media
-      figure.media-left.is-size-2
-        span.icon.is-large.has-text-success
-          i.fas.fa-comments
-      .media-content
-        = form_with model: [@image, Comment.new],
-                    url: image_comments_path(@image) do |form|
-          .field
-            .control
-              = form.text_area :content,
-                               class: :textarea,
-                               placeholder: 'Add a comment...'
-          .field
-            .control
-              = form.submit 'Post comment', class: 'button is-primary'
+- if signed_in?
+  section.section
+    .container
+      article.media
+        figure.media-left.is-size-2
+          span.icon.is-large.has-text-success
+            i.fas.fa-comments
+        .media-content
+          = form_with model: [@image, Comment.new],
+                      url: image_comments_path(@image) do |form|
+            .field
+              .control
+                = form.text_area :content,
+                                 class: :textarea,
+                                 placeholder: 'Add a comment...'
+            .field
+              .control
+                = form.submit 'Post comment', class: 'button is-primary'
