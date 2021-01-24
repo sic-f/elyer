@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'Delete comments', type: :request do
+  let(:user)       { create :user }
+  let(:other_user) { create :user }
+  let(:place)      { create :place, user: user }
+  let(:image)      { create :main_photo, place: place}
+  let(:comment)    { create :comment, commentable: image, user: user}
+
   context 'when not authenticated' do
     it 'raises error' do
-         user = create :user
-        place = create :place, user: user
-        image = create :main_photo, place: place
-      comment = create :comment, commentable: image, user: user
-
       expect {delete "/comments/#{comment.to_param}"}
         .to raise_error Pundit::NotAuthorizedError
     end
@@ -15,13 +16,6 @@ RSpec.describe 'Delete comments', type: :request do
 
   context 'when not own comment' do
     it 'raises authorization error' do
-         user = create :user
-        place = create :place, user: user
-        image = create :main_photo, place: place
-      comment = create :comment, commentable: image, user: user
-
-      other_user = create :user
-
       get root_path(as: other_user)
 
       expect {delete "/comments/#{comment.to_param}"}
