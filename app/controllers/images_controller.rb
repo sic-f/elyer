@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
   end
 
   private
-  
+
   def get_photo
     @image = Image.find params[:id]
   end
