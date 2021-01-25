@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment_and_image, only: %i[edit update destroy]
+  before_action :require_login
 
   def create
       image = Image.find params[:image_id]
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.destroy
       flash[:warning] = 'Comment deleted.'
-      redirect_to image_path(@image)
+      redirect_to image_url @image
     else
       flash[:danger] = 'Something went wrong.'
       render 'images/show'
@@ -37,7 +38,9 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content).merge(user_id: current_user.to_param)
+    params.require(:comment)
+          .permit(:content)
+          .merge(user_id: current_user.to_param)
   end
 
   def set_comment_and_image
