@@ -62,24 +62,28 @@ module Pages
       click_button 'Create Account'
     end
 
-    def no_email_warning?
+    def has_blank_email_warning?
       has_selector? '.help.user-email', text: 'is invalid'
     end
 
-    def no_first_name_warning?
+    def has_blank_first_name_warning?
       has_selector? '.help.user-first-name', text: "can't be blank"
     end
 
-    def no_last_name_warning?
+    def has_blank_last_name_warning?
       has_selector? '.help.user-last-name', text: "can't be blank"
     end
 
-    def no_password_warning?
+    def has_blank_password_warning?
       has_selector? '.help.user-password', text: "can't be blank"
     end
 
-    def success_message?
+    def has_success_message?
       has_selector? 'div.notification.is-success'
+    end
+
+    def has_no_success_message?
+      !has_selector? 'div.notification.is-success'
     end
 
     private
