@@ -71,4 +71,8 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
     Capybara.page.current_window.resize_to(1920, 1080)
   end
+
+  config.after(:each, type: :system) do
+    FileUtils.rm_rf("#{Rails.root}/tmp/storage")
+  end
 end
