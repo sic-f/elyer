@@ -78,6 +78,8 @@ class PlacesController < ApplicationController
     end
 
     def attach_photos_to_place
+      return if photos_in_params.nil?
+
       photos_in_params.each do |photo|
         @place.photos.build.photo.attach photo
       end
