@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CreateCommentsTest < ActionDispatch::IntegrationTest
   test 'redirects to login page when not authenticated' do
-    image = build_stubbed :photo
+     image = build_stubbed :photo
     params = { comment: {
       content: 'comment',
       commentable_id: image.id,
