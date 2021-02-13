@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @places = Place.all.order(updated_at: :desc)
+    @places = Place.order(created_at: :desc).page params[:page]
   end
 end

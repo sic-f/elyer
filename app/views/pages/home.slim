@@ -1,1 +1,2 @@
 = render(@places) || render('no_places_yet')
+= paginate @places, window: 1, outer_window: 1
