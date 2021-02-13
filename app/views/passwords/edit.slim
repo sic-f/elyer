@@ -1,0 +1,21 @@
+section.hero.is-info.is-fullheight
+  .hero-body
+    .container
+      #clearance.password-reset
+        h2.title= t('.title')
+        h3.subtitle= t('.description')
+        = form_for :password_reset,
+          url: user_password_path(@user, token: @user.confirmation_token),
+          html: { method: :put } do |form|
+          .field
+            = form.label :password, class: %i[label has-text-light]
+            .control.has-icons-left
+              = form.password_field :password,
+                type: :password,
+                class: :input,
+                placeholder: :password
+              span.icon.is-small.is-left
+                i.fas.fa-key
+          .field
+            .control
+              = form.submit 'Save this password', class: %i[button is-warning]

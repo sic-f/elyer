@@ -11,7 +11,7 @@ section.hero.is-info.is-fullheight
             = link_to t('.home'), root_path, class: 'has-text-light home-link'
           li
             = link_to t('.forgot_password'),
-                      'javascript:void(0)',
+                      new_password_path,
                       class: 'has-text-light forgot-password-link'
           - if Clearance.configuration.allow_sign_up?
             li

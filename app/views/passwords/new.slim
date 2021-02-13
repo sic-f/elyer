@@ -1,0 +1,19 @@
+section.hero.is-info.is-fullheight
+  .hero-body
+    .container
+      #clearance.password-reset
+        h2.title= t('.title')
+        h3.subtitle= t('.description')
+        = form_for :password, url: password_path do |form|
+          .field
+            = form.label :email, class: %i[label has-text-light]
+            .control.has-icons-left
+              = form.text_field :email,
+                type: :email,
+                class: :input,
+                placeholder: :email
+              span.icon.is-small.is-left
+                i.fas.fa-envelope
+          .field
+            .control
+              = form.submit 'Change password', class: %i[button is-primary]
