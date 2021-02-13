@@ -217,6 +217,18 @@ GEM
       ruby_version (~> 1.0)
       wirb (~> 2.0, >= 2.2.1)
     json (2.5.1)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     kwalify (0.7.2)
     listen (3.4.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -442,6 +454,7 @@ DEPENDENCIES
   guard
   image_processing (~> 1.2)
   irbtools
+  kaminari
   listen (>= 3.0.5)
   minitest-reporters
   pg (>= 0.18, < 2.0)
