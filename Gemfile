@@ -54,6 +54,7 @@ end
 
 group :development do
   gem 'guard'
+  gem 'letter_opener'
   gem 'listen', '>= 3.0.5'
   gem 'reek', require: false
   gem 'rubocop', require: false
