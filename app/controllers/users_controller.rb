@@ -52,7 +52,7 @@ class UsersController < Clearance::UsersController
 
     update_params
   end
-  
+
   def delete_password_if_not_present_in(update_params)
     update_params.delete(:password) if user_params[:password].blank?
   end
