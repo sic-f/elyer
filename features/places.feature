@@ -43,3 +43,10 @@ Feature: Places
     Given I am signed in and I go to a place's page
     When I click on the delete "trash can" button
     Then I should be redirected to the home page with a successful delete message
+
+  @javascript
+  Scenario: Delete a place with reviews
+    Given I am signed in and I go to a place's page with reviews
+    When I click on the delete "trash can" button
+    Then I should be redirected to the home page with a successful delete message
+

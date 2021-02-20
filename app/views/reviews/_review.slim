@@ -1,0 +1,14 @@
+article.mt-4
+  article.card
+    header.card-header.is-flex.is-align-items-center
+      figure.image.pl-3
+        = image_tag place_view.reviewer_thumbnail(review.reviewer_avatar),
+          class: 'is-rounded'
+      p.card-header-title.has-text-primary.is-unselectable #{review.reviewer_name}
+    .card-content
+      h2.subtitle = review.headline
+      .content = simple_format review.content
+      small.is-size-7
+        | Reviewed on 
+        time datetime="#{review.updated_at}"
+          = review.updated_at.strftime('%B %d, %Y')

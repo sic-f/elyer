@@ -5,6 +5,7 @@ class Place < ApplicationRecord
 
   has_one :main_photo, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   belongs_to :user
 

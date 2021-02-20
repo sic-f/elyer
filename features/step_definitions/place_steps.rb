@@ -20,7 +20,10 @@ Then(/^I fill in the required fields to submit a place$/) do
 end
 
 Then(/^I should be on the place page$/) do
-  assert_selector 'div.notification.is-success', text: 'Successfully submitted place!'
+  assert_selector 'div.notification.is-success',
+                  text: 'Successfully submitted place!'
+  assert_selector 'div.notification.is-primary',
+                  text: "Don't forget to write a review!"
   assert_selector 'h1.title', text: 'Sabang Beach'
 end
 
@@ -79,6 +82,16 @@ end
 Given(/^I am signed in and I go to a place's page$/) do
   user  = create :user
   place = create :place, user: user
+
+  sign_in_as user
+
+  visit "/places/#{place.to_param}"
+end
+
+Given "I am signed in and I go to a place's page with reviews" do
+  user  = create :user
+  place = create :place, user: user
+  place.reviews.create(content: 'some content', reviewer: user)
 
   sign_in_as user
 

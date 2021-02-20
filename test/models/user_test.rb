@@ -30,4 +30,10 @@ class UserTest < ActiveSupport::TestCase
 
     refute user.valid?
   end
+
+  test '#name' do
+    user = build :user, first_name: 'Juan', last_name: 'Carlos'
+
+    assert_equal user.name, 'Juan Carlos'
+  end
 end
