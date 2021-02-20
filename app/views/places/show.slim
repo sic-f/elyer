@@ -35,12 +35,14 @@
         h1.title.has-text-grey-light #{@place.name}
         h2.subtitle #{@place.address}
         .content
-          #{simple_format @place.description}
 
           hr
           .title.is-6 Mobile:&nbsp#{link_to @place.mobile, "tel:#{@place.mobile}"}
           .title.is-6 Landline:&nbsp#{link_to @place.landline, "tel:#{@place.landline}"}
           .title.is-6 Email:&nbsp#{mail_to @place.email}
+    .card.mt-5
+      .card-content
+        .content = simple_format @place.description
 
   .column
     .title.is-5.has-text-primary More Images
@@ -52,7 +54,7 @@
             .box
               figure.image.is-clickable
                 = link_to image_path(photo) do
-                  = image_tag photo.photo.variant(resize: '200x200')
+                  = image_tag photo.photo.variant(resize_to_fill: ['400', '400'])
     - else
       .container
         article.message.is-link
