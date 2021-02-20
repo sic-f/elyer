@@ -1,7 +1,7 @@
 - apply_padding = signed_in?
 - if flash[:success].eql? 'Successfully submitted place!'
   .notification.is-primary.has-text-centered
-    | Don't forget to 
+    | Don't forget to
     span = link_to 'write a review!', new_place_review_path(@place)
 .columns
   .column.is-one-third
@@ -35,12 +35,14 @@
         h1.title.has-text-grey-light #{@place.name}
         h2.subtitle #{@place.address}
         .content
-          #{simple_format @place.description}
 
           hr
           .title.is-6 Mobile:&nbsp#{link_to @place.mobile, "tel:#{@place.mobile}"}
           .title.is-6 Landline:&nbsp#{link_to @place.landline, "tel:#{@place.landline}"}
           .title.is-6 Email:&nbsp#{mail_to @place.email}
+    .card.mt-5
+      .card-content
+        .content = simple_format @place.description
 
   .column
     .title.is-5.has-text-primary More Images
