@@ -1,4 +1,8 @@
 - apply_padding = signed_in?
+- if flash[:success].eql? 'Successfully submitted place!'
+  .notification.is-primary.has-text-centered
+    | Don't forget to 
+    span = link_to 'write a review!', new_place_review_path(@place)
 .columns
   .column.is-one-third
     article.card
@@ -16,7 +20,7 @@
             span.icon
               i.fas.fa-trash aria-hidden=true
         - if authorized_to?(:edit?, @place)
-          = link_to edit_place_path(@place), 
+          = link_to edit_place_path(@place),
                     class: 'card-header-icon edit-place-link',
                     'aria-label': 'more-options' do
             span.icon
@@ -56,3 +60,12 @@
           .message-body No images yet
 
     = render 'place_image_modal'
+
+section.section
+  .container
+    h3.title.is-3.has-text-grey-light Reviews
+    = link_to 'Write a traveller review', new_place_review_path(@place)
+
+  section.section
+    .container
+      = render @place.reviews, place_view: @place_view
