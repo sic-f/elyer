@@ -1,7 +1,7 @@
 - apply_padding = signed_in?
 - if flash[:success].eql? 'Successfully submitted place!'
   .notification.is-primary.has-text-centered
-    | Don't forget to
+    | Don't forget to 
     span = link_to 'write a review!', new_place_review_path(@place)
 .columns
   .column.is-one-third
@@ -54,7 +54,7 @@
             .box
               figure.image.is-clickable
                 = link_to image_path(photo) do
-                  = image_tag photo.photo.variant(resize: '200x200')
+                  = image_tag photo.photo.variant(resize_to_fill: ['400', '400'])
     - else
       .container
         article.message.is-link
