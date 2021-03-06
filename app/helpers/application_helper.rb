@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def has_main_photo?(resource, &block)
     capture &block if resource.main_photo&.image&.attached?
   end
