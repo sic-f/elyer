@@ -13,6 +13,8 @@ h1.title.is-marginless
                 = form.text_area :content,
                                  class: :textarea,
                                  placeholder: 'Add a comment...'
-            .field
+            .field.is-grouped
               .control
                 = form.submit 'Post comment', class: 'button is-primary'
+              .control
+                = link_to 'Cancel', 'javascript:window.history.back()', class: 'button is-info'
