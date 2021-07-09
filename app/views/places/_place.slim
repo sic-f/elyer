@@ -21,12 +21,12 @@ article.home-page-item
       h1.title.has-text-grey-light = place.name
       h2.subtitle = place.address
       .content = simple_format place.description
-    .card-footer
-      p.card-footer-item.has-text-primary
+      hr
+      p.title.is-6
         | Mobile:&nbsp#{link_to place.mobile, "tel:#{place.mobile}"}
-      p.card-footer-item.has-text-warning
+      p.title.is-6
         | Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
-      p.card-footer-item.has-text-info
+      p.title.is-6
         | Email:&nbsp#{mail_to place.email}
       = render_only_on_home_page do
         = link_to 'More images', place, class: 'card-footer-item'
