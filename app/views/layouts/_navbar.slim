@@ -18,10 +18,11 @@ nav.navbar.is-spaced.is-fixed-top role='navigation' aria-label='main navigation'
                   class: 'navbar-item user-contributions-link'
     .navbar-end
       - if signed_in?
-        .navbar-item.new-place-link
-          span.icon
-            i.fas.fa-map-pin
-          = link_to 'Add', new_user_place_path(current_user)
+        = link_to new_user_place_path(current_user) do
+          .navbar-item.new-place-link
+            span.icon.mr-1
+              i.fas.fa-map-pin
+            | Add
         = link_to 'Sign out',
                   sign_out_path,
                   method: :delete,
