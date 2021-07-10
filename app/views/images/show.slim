@@ -8,8 +8,8 @@ section.section
               i.fas.fa-arrow-circle-left
             |  Back to place
         - if image_authorized_to(:edit?, @image)
-          = link_to edit_image_path, class: 'card-header-icon',
-                                     'aria-label': 'more-options' do
+          = link_to edit_image_path(anchor: 'image-caption-edit-field'),
+              class: 'card-header-icon', 'aria-label': 'more-options' do
             span.icon
               - if @image.caption?
                 i.fas.fa-pen-square aria-hidden=true
