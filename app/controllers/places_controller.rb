@@ -43,6 +43,8 @@ class PlacesController < ApplicationController
 
     authorize @place
 
+    attach_pictures_to_place
+
     if @place.update(place_params)
       flash[:success] = 'Update success!'
 
@@ -76,12 +78,11 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
-                                    :pictures,
                                     profile_picture_attributes: [:image])
     end
 
     def attach_pictures_to_place
-      return if pictures_in_params.nil?
+      return if pictures_in_params.blank?
 
       pictures_in_params.each do |picture|
         @place.pictures.build.image.attach picture

@@ -8,5 +8,4 @@ class Place < ApplicationRecord
   validates :name, :address, presence: true
 
   accepts_nested_attributes_for :profile_picture
-  accepts_nested_attributes_for :pictures
 end
