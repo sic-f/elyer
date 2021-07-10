@@ -1,7 +1,7 @@
 module ImageCaptionHelper
-  def enter_caption_for_photo_with(caption)
+  def enter_caption_for_picture_with(caption)
     click_link 'Add description'
-    fill_in 'photo[caption]', with: caption
+    fill_in 'picture[caption]', with: caption
     click_button 'Save'
   end
 end
