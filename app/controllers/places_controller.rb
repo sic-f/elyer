@@ -2,22 +2,24 @@ class PlacesController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def show
-    @place      = Place.includes(:photos).find(params[:id])
+    @place = Place.includes(:pictures).find(params[:id])
     @place_view = Presenters::Place.new
   end
 
   def new
-    @user       = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
+
     authorize @user, policy_class: PlacePolicy
-    @place      = Place.new
-    @main_photo = @place.build_main_photo
+
+    @place = Place.new
+    @profile_picture = @place.build_profile_picture
   end
 
   def create
-    @user  = current_user
+    @user = current_user
     @place = @user.places.new(place_params)
 
-    attach_photos_to_place
+    attach_pictures_to_place
 
     if @place.save
       flash[:success] = 'Successfully submitted place!'
@@ -30,6 +32,7 @@ class PlacesController < ApplicationController
 
   def edit
     @place = Place.find(params[:id])
+    @profile_picture = @place.profile_picture || ProfilePicture.new
 
     authorize @place
 
@@ -40,6 +43,8 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
 
     authorize @place
+
+    attach_pictures_to_place
 
     if @place.update(place_params)
       flash[:success] = 'Update success!'
@@ -74,19 +79,18 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
-                                    :photos,
-                                    main_photo_attributes: [:image])
+                                    profile_picture_attributes: %i[id image])
     end
 
-    def attach_photos_to_place
-      return if photos_in_params.nil?
+    def attach_pictures_to_place
+      return if pictures_in_params.blank?
 
-      photos_in_params.each do |photo|
-        @place.photos.build.photo.attach photo
+      pictures_in_params.each do |picture|
+        @place.pictures.build.image.attach picture
       end
     end
 
-    def photos_in_params
-      params[:place][:photos]
+    def pictures_in_params
+      params[:place][:pictures]
     end
 end

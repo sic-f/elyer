@@ -28,9 +28,9 @@
             | EDIT
       .card-image
         figure.image.is-clickable
-          = image_tag place_main_photo(@place.main_photo),
+          = image_tag profile_picture(@place.profile_picture),
                       class: 'place-image',
-                      data: { image: url_for(place_main_photo_natural(@place.main_photo)) }
+                      data: { image: url_for(profile_picture_original_size(@place.profile_picture)) }
       .card-content
         h1.title.has-text-grey-light #{@place.name}
         h2.subtitle #{@place.address}
@@ -46,15 +46,15 @@
 
   .column
     .title.is-5.has-text-primary More Images
-    - if @place.photos.any?
+    - if @place.pictures.any?
       .subtitle.is-7.has-text-info click images to view comments & descriptions
       .columns.is-multiline.is-vcentered
-        - @place.photos.each do |photo|
+        - @place.pictures.each do |picture|
           .column.is-one-third
             .box
               figure.image.is-clickable
-                = link_to image_path(photo) do
-                  = image_tag photo.photo.variant(resize_to_fill: ['400', '400'])
+                = link_to image_path(picture) do
+                  = image_tag picture.image.variant(resize_to_fill: ['400', '400'])
     - else
       .container
         article.message.is-link

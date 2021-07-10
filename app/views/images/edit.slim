@@ -1,13 +1,13 @@
 header.section.is-paddingless.edit-image-box
   .container
-    = link_to place_path(@image.place) do
+    = link_to place_path(@image.imageable) do
       span.icon
         i.fas.fa-arrow-circle-left
       |  Back to place
 
 section.section
   .container
-    = image_tag @image.photo, class: 'box edit-image-box'
+    = image_tag @image.image, class: 'box edit-image-box'
 
 section.section.is-paddingless
   .container
@@ -18,7 +18,7 @@ section.section.is-paddingless
       .field
         = form.label :'add description', class: :label
         .control
-          = form.text_field :caption, class: :input
+          = form.text_field :caption, class: :input, id: 'image-caption-edit-field'
 
       .field.is-grouped.is-grouped-centered
         .control

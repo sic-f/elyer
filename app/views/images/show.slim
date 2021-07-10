@@ -3,13 +3,13 @@ section.section
     .card
       header.card-header
         span.card-header-title
-          = link_to place_path(@image.place) do
+          = link_to place_path(@image.imageable) do
             span.icon
               i.fas.fa-arrow-circle-left
             |  Back to place
         - if image_authorized_to(:edit?, @image)
-          = link_to edit_image_path, class: 'card-header-icon',
-                                     'aria-label': 'more-options' do
+          = link_to edit_image_path(anchor: 'image-caption-edit-field'),
+              class: 'card-header-icon', 'aria-label': 'more-options' do
             span.icon
               - if @image.caption?
                 i.fas.fa-pen-square aria-hidden=true
@@ -19,7 +19,7 @@ section.section
 
       .card-image
         figure.image
-          = image_tag @image.photo
+          = image_tag @image.image
       .card-content
         .content
           p.has-text-centered= @image.caption

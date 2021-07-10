@@ -1,8 +1,8 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def has_main_photo?(resource, &block)
-    capture &block if resource.main_photo&.image&.attached?
+  def profile_picture?(resource, &block)
+    capture &block if resource.profile_picture&.image&.attached?
   end
 
   def authorized_to?(operation, resource)

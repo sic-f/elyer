@@ -11,3 +11,13 @@ FactoryBot.create :user,
   last_name: 'Burgos',
   email: 'lb@elyer.net',
   password: 'hehehe'
+
+15.times do
+  FactoryBot.create :place,
+    name: FFaker::Venue.name,
+    description: FFaker::CheesyLingo.paragraph,
+    address: FFaker::AddressJA.street_address,
+    mobile: FFaker::PhoneNumberAU.international_mobile_phone_number,
+    landline: FFaker::PhoneNumberAU.international_home_work_phone_number,
+    email: FFaker::Internet.disposable_email
+end

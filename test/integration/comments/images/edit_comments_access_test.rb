@@ -4,7 +4,7 @@ class EditCommentsAccessTest < ActionDispatch::IntegrationTest
   test 'requires log in' do
        user = create :user
       place = create :place, user: user
-      image = create :main_photo, place: place
+      image = create :profile_picture, imageable: place
     comment = create :comment, commentable: image, user: user
 
     assert_raises Pundit::NotAuthorizedError do
@@ -15,7 +15,7 @@ class EditCommentsAccessTest < ActionDispatch::IntegrationTest
   test 'edit own comment only' do
        user = create :user
       place = create :place, user: user
-      image = create :main_photo, place: place
+      image = create :profile_picture, imageable: place
     comment = create :comment, commentable: image, user: user
 
     other_user = create :user

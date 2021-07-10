@@ -1,9 +1,9 @@
 And("place {string} exists with a photo") do |place|
-  create_place_with_photo_from place
+  create_place_with_picture_from place
 end
 
 Given("user is on the image page") do
-  visit image_path @photo
+  visit image_path @picture
 end
 
 When("user posts a comment {string} on the picture") do |content|

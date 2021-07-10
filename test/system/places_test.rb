@@ -34,8 +34,8 @@ class PlacesTest < ApplicationSystemTestCase
       fill_in 'place[mobile]', with: '09954636990'
       fill_in 'place[landline]', with: '(02) 952-5463'
       fill_in 'place[email]', with: 'sabang@example.com'
-      attach_file 'place[main_photo]', image_upload_file, visible: false
-      attach_file 'place[images][]', image_upload_file, visible: false
+      attach_file 'place[profile_photo]', image_upload_file, visible: false
+      attach_file 'place[pictures][]', image_upload_file, visible: false
 
       click_button 'Submit'
     end

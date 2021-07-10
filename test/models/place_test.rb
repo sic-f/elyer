@@ -28,24 +28,24 @@ class PlaceTest < ActiveSupport::TestCase
     refute place.valid?
   end
 
-  test '#main_photo' do
+  test '#profile_picture' do
     place = build :place
-    build :main_photo, place: place
+    place.build_profile_picture
 
-    place.main_photo.image.attach(local_file)
+    place.profile_picture.image.attach(local_file)
 
-    assert_equal place.main_photo.image.attached?, true
+    assert_equal place.profile_picture.image.attached?, true
   end
 
   test 'does not increase ActiveStorage::Attachment.count' do
     place = build :place
-    build :main_photo, place: place
+    place.build_profile_picture
 
-    place.main_photo.image.attach local_file
+    place.profile_picture.image.attach local_file
     place.save
 
     assert_difference 'ActiveStorage::Attachment.count', 0 do
-      place.main_photo.image.attach local_file
+      place.profile_picture.image.attach local_file
       place.save
     end
   end
