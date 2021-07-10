@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.includes(:pictures).find(params[:id])
-    @place_view = Presenters::Place.new
+    @presenter = Places::Presenter.new(@place)
   end
 
   def new
@@ -79,6 +79,9 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
+                                    :website,
+                                    :facebook,
+                                    :instagram,
                                     profile_picture_attributes: %i[id image])
     end
 

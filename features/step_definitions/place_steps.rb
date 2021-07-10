@@ -15,8 +15,23 @@ Then(/^I fill in the required fields to submit a place$/) do
   fill_in 'place[mobile]', with: '09954636990'
   fill_in 'place[landline]', with: '(02) 952-5463'
   fill_in 'place[email]', with: 'sabang@example.com'
+  fill_in 'place[website]', with: 'tarana.com'
+  fill_in 'place[facebook]', with: 'facebook.com/tarana'
+  fill_in 'place[instagram]', with: '@taranaaba'
   attach_file 'place[profile_picture_attributes][image]', image_upload_file, visible: false
   attach_file 'place[pictures][]', image_upload_file, visible: false
+end
+
+When('I fill in the required fields with blank website and social media sites') do
+  fill_in 'place[name]', with: 'Sabang Beach'
+  fill_in 'place[description]', with: 'Surf beach'
+  fill_in 'place[address]', with: 'Baler, Aurora'
+  fill_in 'place[mobile]', with: '09954636990'
+  fill_in 'place[landline]', with: '(02) 952-5463'
+  fill_in 'place[email]', with: 'sabang@example.com'
+  fill_in 'place[website]', with: nil
+  fill_in 'place[facebook]', with: nil
+  fill_in 'place[instagram]', with: nil
 end
 
 Then(/^I should be on the place page$/) do
@@ -25,6 +40,20 @@ Then(/^I should be on the place page$/) do
   assert_selector 'div.notification.is-primary',
                   text: "Don't forget to write a review!"
   assert_selector 'h1.title', text: 'Sabang Beach'
+  assert_selector '.title.is-6[data-testid="website"] > a[href="https://tarana.com"]', text: 'tarana.com'
+  assert_selector '.title.is-6[data-testid="facebook"] > a[href="https://facebook.com/tarana"]', text: 'facebook.com/tarana'
+  assert_selector '.title.is-6[data-testid="instagram"]', text: 'Instagram:&nbsp@taranaaba'
+end
+
+Then('I should see blank website and social media sites') do
+  assert_selector 'div.notification.is-success',
+                  text: 'Successfully submitted place!'
+  assert_selector 'div.notification.is-primary',
+                  text: "Don't forget to write a review!"
+  assert_selector 'h1.title', text: 'Sabang Beach'
+  assert_selector '.title.is-6[data-testid="website"] > a[href="https://"]', text: ''
+  assert_selector '.title.is-6[data-testid="facebook"] > a[href="https://"]', text: ''
+  assert_selector '.title.is-6[data-testid="instagram"]', text: 'Instagram:&nbsp'
 end
 
 # invalid fields
@@ -35,6 +64,9 @@ When(/^I fill in the required fields with blank values$/) do
   fill_in 'place[mobile]', with: '09954636990'
   fill_in 'place[landline]', with: '(02) 952-5463'
   fill_in 'place[email]', with: 'sabang@example.com'
+  fill_in 'place[website]', with: 'tarana.com'
+  fill_in 'place[facebook]', with: 'facebook.com/tarana'
+  fill_in 'place[instagram]', with: '@taranaaba'
   attach_file 'place[profile_picture_attributes][image]', image_upload_file, visible: false
   attach_file 'place[pictures][]', image_upload_file, visible: false
 end

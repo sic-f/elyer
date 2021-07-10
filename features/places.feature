@@ -19,6 +19,13 @@ Feature: Places
     And I click on "Submit" button
     Then I should be on the place page
 
+  Scenario: Submit place with blank website and social media sites
+    Given I am signed in
+    And I click on "Add" link
+    When I fill in the required fields with blank website and social media sites
+    And I click on "Submit" button
+    Then I should see blank website and social media sites
+
   Scenario: Submit a place with invalid fields
     Given I am signed in
     And I click on "Add" link
