@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :get_photo, only: %i[show edit]
+  before_action :set_image, only: %i[show edit]
 
   def show
     @comments = @image.comments.order(created_at: :asc)
@@ -23,9 +23,24 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    image = Image.find(params[:id])
+    place = image.imageable
+
+    authorize image, policy_class: ImagePolicy
+
+    if image.destroy
+      flash[:success] = 'Picture deleted successfuly.'
+      redirect_to place
+    else
+      flash[:warning] = 'Something went wrong.'
+      render :show
+    end
+  end
+
   private
 
-  def get_photo
+  def set_image
     @image = Image.find params[:id]
   end
 
