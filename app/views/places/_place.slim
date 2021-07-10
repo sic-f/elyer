@@ -28,5 +28,11 @@ article.home-page-item
         | Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
       p.title.is-6
         | Email:&nbsp#{mail_to place.email}
+      p.title.is-6
+        | Website:&nbsp#{link_to place.website }
+      p.title.is-6
+        | Facebook:&nbsp#{link_to place.facebook }
+      p.title.is-6
+        | Instagram:&nbsp#{place.instagram}
       = render_only_on_home_page do
         = link_to 'More images', place, class: 'card-footer-item'

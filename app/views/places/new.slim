@@ -85,6 +85,30 @@ section.section
               = form.email_field :email, placeholder: 'Email', class: 'input'
 
       .field.is-horizontal
+        .field-label.is-normal
+          = form.label :website, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_field :website, placeholder: 'Website', class: 'input'
+
+      .field.is-horizontal
+        .field-label.is-normal
+          = form.label :facebook, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_field :facebook, placeholder: 'Facebook page', class: 'input'
+
+      .field.is-horizontal
+        .field-label.is-normal
+          = form.label :instagram, class: 'label'
+        .field-body
+          .field
+            .control
+              = form.text_field :instagram, placeholder: 'Instagram', class: 'input'
+
+      .field.is-horizontal
         .field-label.is-medium
           = form.label :pictures, 'Upload more images', class: 'label'
         .field-body
