@@ -1,12 +1,12 @@
 class Place < ApplicationRecord
-  has_one :main_photo, dependent: :destroy
-  has_many :photos, dependent: :destroy
+  has_one :profile_picture, as: :imageable, dependent: :destroy
+  has_many :pictures, as: :imageable, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   belongs_to :user
 
   validates :name, :address, presence: true
 
-  accepts_nested_attributes_for :main_photo
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :profile_picture
+  accepts_nested_attributes_for :pictures
 end
