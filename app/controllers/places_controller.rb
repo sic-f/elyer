@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     authorize @user, policy_class: PlacePolicy
 
     @place = Place.new
-    @main_photo = @place.build_profile_picture
+    @profile_picture = @place.build_profile_picture
   end
 
   def create
@@ -32,6 +32,7 @@ class PlacesController < ApplicationController
 
   def edit
     @place = Place.find(params[:id])
+    @profile_picture = @place.profile_picture || ProfilePicture.new
 
     authorize @place
 
@@ -78,7 +79,7 @@ class PlacesController < ApplicationController
                                     :mobile,
                                     :landline,
                                     :email,
-                                    profile_picture_attributes: [:image])
+                                    profile_picture_attributes: %i[id image])
     end
 
     def attach_pictures_to_place
