@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-FactoryBot.create :user,
+user = FactoryBot.create :user,
   first_name: 'Loren',
   last_name: 'Burgos',
-  email: 'lb@elyer.net',
-  password: 'hehehe'
+  email: 'user_1@sanitized.com',
+  password: 'workcloud'
 
 15.times do
   FactoryBot.create :place,
@@ -19,5 +19,6 @@ FactoryBot.create :user,
     address: FFaker::AddressJA.street_address,
     mobile: FFaker::PhoneNumberAU.international_mobile_phone_number,
     landline: FFaker::PhoneNumberAU.international_home_work_phone_number,
-    email: FFaker::Internet.disposable_email
+    email: FFaker::Internet.disposable_email,
+    user: user
 end
