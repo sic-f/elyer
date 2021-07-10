@@ -25,7 +25,6 @@
                     'aria-label': 'more-options' do
             span.icon
               i.fas.fa-edit aria-hidden=true
-            | EDIT
       .card-image
         figure.image.is-clickable
           = image_tag profile_picture(@place.profile_picture),
@@ -37,12 +36,7 @@
         .content
 
           hr
-          .title.is-6 Mobile:&nbsp#{link_to @place.mobile, "tel:#{@place.mobile}"}
-          .title.is-6 Landline:&nbsp#{link_to @place.landline, "tel:#{@place.landline}"}
-          .title.is-6 Email:&nbsp#{mail_to @place.email}
-          .title.is-6 data-testid=:website Website:&nbsp#{link_to @place.website, @presenter.website_link}
-          .title.is-6 data-testid=:facebook Facebook:&nbsp#{link_to @place.facebook, @presenter.facebook_link}
-          .title.is-6 data-testid=:instagram Instagram:&nbsp#{@place.instagram}
+          = render 'profile_details', place: @place, presenter: @presenter
     .card.mt-5
       .card-content
         .content = simple_format @place.description

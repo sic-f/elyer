@@ -1,2 +1,6 @@
-= render(@places) || render('no_places_yet')
+- if @places.empty?
+  = render 'no_places_yet'
+- else
+  - @places.each do |place| 
+    = render place, presenter: Places::Presenter.new(place)
 == pagy_bulma_nav @pagy

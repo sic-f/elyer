@@ -2,17 +2,16 @@ article.home-page-item
   article.card
     header.card-header
       p.card-header-title.has-text-primary.is-unselectable = place.name
-      = link_to 'More Details',
-                place,
-                class: "card-header-icon has-text-info is-size-7-mobile \
-                        has-text-weight-bold place-more-details"
       - if authorized_to?(:edit?, place)
         = link_to edit_place_path(place),
-                  class: 'card-header-icon edit-place-link',
+                  class: 'card-header-icon is-paddingless edit-place-link',
                   'aria-label': 'more-options' do
           span.icon
             i.fas.fa-edit aria-hidden=true
-          | EDIT
+      = link_to 'more info',
+                place,
+                class: "card-header-icon has-text-info is-size-7-mobile \
+                        has-text-weight-bold is-paddingless pl-2 pr-4 place-more-details"
     .card-image
       = link_to place do
         figure.image
@@ -22,17 +21,6 @@ article.home-page-item
       h2.subtitle = place.address
       .content = simple_format place.description
       hr
-      p.title.is-6
-        | Mobile:&nbsp#{link_to place.mobile, "tel:#{place.mobile}"}
-      p.title.is-6
-        | Landline:&nbsp#{link_to place.landline, "tel:#{place.landline}"}
-      p.title.is-6
-        | Email:&nbsp#{mail_to place.email}
-      p.title.is-6
-        | Website:&nbsp#{link_to place.website }
-      p.title.is-6
-        | Facebook:&nbsp#{link_to place.facebook }
-      p.title.is-6
-        | Instagram:&nbsp#{place.instagram}
+      = render 'places/profile_details', place: place, presenter: presenter
       = render_only_on_home_page do
         = link_to 'More images', place, class: 'card-footer-item'
