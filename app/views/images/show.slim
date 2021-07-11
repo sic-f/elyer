@@ -1,41 +1,46 @@
-section.section
-  .container
-    .card
-      header.card-header
-        span.card-header-title
-          = link_to place_path(@image.imageable) do
-            span.icon
-              i.fas.fa-arrow-circle-left
-            |  Back to place
-        - if image_authorized_to(:destroy?, @image)
-          = link_to image_path,
-                    class: 'card-header-icon is-paddingless trash-can-link',
-                    'aria-label': 'more-options',
-                    method: :delete,
-                    data: { confirm: "Are you sure you want to delete #{@image.image.filename}?" } do
-            span.icon
-              i.fas.fa-trash aria-hidden=true
-        - if image_authorized_to(:edit?, @image)
-          = link_to edit_image_path(anchor: 'image-caption-edit-field'),
-              class: 'card-header-icon', 'aria-label': 'more-options' do
-            span.icon
-              - if @image.caption?
-                i.fas.fa-pen-square aria-hidden=true
-              - else
-                i.fas.fa-plus aria-hidden=true
-            | description
+.card.image-show
+  header.card-header
+    span.card-header-title
+      = link_to place_path(@image.imageable) do
+        span.icon
+          i.fas.fa-arrow-circle-left
+        span.is-hidden-mobile Back to place
+    - if image_authorized_to(:destroy?, @image)
+      = link_to image_path,
+                class: 'card-header-icon is-paddingless trash-can-link',
+                'aria-label': 'more-options',
+                method: :delete,
+                title: 'Delete picture 🗑',
+                data: { confirm: "Are you sure you want to delete #{@image.image.filename}?" } do
+        span.icon
+          i.fas.fa-trash aria-hidden=true
+    - if image_authorized_to(:edit?, @image)
+      = link_to edit_image_path(anchor: 'image-caption-edit-field'),
+          class: 'card-header-icon', 'aria-label': 'more-options', title: '📝 Add/edit picture description' do
+        span.icon
+          - if @image.caption?
+            i.fas.fa-pen-square aria-hidden=true
+          - else
+            i.fas.fa-plus aria-hidden=true
+        | description
 
-      .card-image
-        figure.image
-          = image_tag @image.image
-      .card-content
-        .content
-          p.has-text-centered= @image.caption
-      footer.card-footer
-        - if image_authorized_to(:edit?, @image)
-          = link_to photo_edit_caption_label(@image),
-                    edit_image_path,
-                    class: 'card-footer-item edit-photo-link'
+  .card-image
+    figure.image.is-clickable
+      = link_to url_for(@image.image), target: '_blank', title: '🏞 Click to view full size' do
+        - image_tag @image.image
+  .card-content
+    .content
+      p.has-text-centered= @image.caption
+  footer.card-footer
+    - if image_authorized_to(:edit?, @image)
+      = link_to picture_edit_caption_label(@image),
+                edit_image_path,
+                class: 'card-footer-item edit-photo-link'
+
+p.mt-3.has-text-centered.is-size-7
+  span.is-hidden-mobile 🏞 click
+  span.is-hidden-tablet 🏞 tap
+  |  on image to view full size
 
 - unless @comments.blank?
   section.section

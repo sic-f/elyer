@@ -44,13 +44,13 @@
   .column
     .title.is-5.has-text-primary More Images
     - if @place.pictures.any?
-      .subtitle.is-7.has-text-info click images to view comments & descriptions
+      .subtitle.is-7.has-text-info click images to view comments & description
       .columns.is-multiline.is-vcentered
         - @place.pictures.each do |picture|
           .column.is-one-third
             .box
               figure.image.is-clickable
-                = link_to image_path(picture) do
+                = link_to image_path picture do
                   = image_tag picture.image.variant(resize_to_fill: ['400', '400'])
     - else
       .container

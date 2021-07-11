@@ -16,7 +16,7 @@ section.section.is-paddingless
                 local: true,
                 class: 'general-form' do |form|
       .field
-        = form.label :'add description', class: :label
+        = form.label picture_edit_caption_label(@image), class: :label
         .control
           = form.text_field :caption, class: :input, id: 'image-caption-edit-field'
 
