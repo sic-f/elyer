@@ -1,53 +1,51 @@
 .container
-  .columns.is-variable.is-0
+  .columns.is-variable.is-8
     .column.is-two-thirds
-      section.section
-        .container
-          article.card
-            header.card-header
-              span.card-header-title
-                = link_to @place do
-                  span.icon
-                    i.fas.fa-arrow-circle-left
-            .card-image
-              figure.image.is-clickable
-                = image_tag profile_picture(@place.profile_picture),
-                            class: 'place-image',
-                            data: { image: url_for(profile_picture_original_size(@place.profile_picture)) }
-            .card-content
-              h1.title.has-text-grey-light #{@place.name}
-              h2.subtitle #{@place.address}
+      .container
+        article.card.review-new
+          header.card-header
+            span.card-header-title
+              = link_to @place do
+                span.icon
+                  i.fas.fa-arrow-circle-left
+          .card-image
+            figure.image
+              = image_tag profile_picture(@place.profile_picture),
+                          class: 'place-image',
+                          data: { image: url_for(profile_picture_original_size(@place.profile_picture)) }
+          .card-content
+            h1.title.has-text-grey-light #{@place.name}
+            h2.subtitle #{@place.address}
 
     .column
-      section.section
-        .container
-          h3.title.is-3.has-text-centered Review this place
-          = form_with model: [@place, @review],
-            id: :new_review,
-            local: true do |form|
-            .field
-              .label.is-normal
-                = form.label :headline, 'Add a headline', class: 'label'
-              .control
-                = form.text_field :headline,
-                  placeholder: "What's most imporant to know?",
-                  class: 'input',
-                  autocomplete: 'off'
-            .field
-              .label.is-normal
-                = form.label :content, 'Add a written review',
-                  class: 'label'
-              .control
-                = form.text_area :content,
-                  rows: 5,
-                  placeholder: 'What did you like or dislike?',
-                  class: 'textarea', autocomplete: 'off'
+      .container
+        h3.title.has-text-centered.is-3.is-size-4-mobile Review this place
+        = form_with model: [@place, @review],
+          id: :new_review,
+          local: true do |form|
+          .field
+            .label.is-normal
+              = form.label :headline, 'Add a headline', class: 'label'
+            .control
+              = form.text_field :headline,
+                placeholder: "What's most imporant to know?",
+                class: 'input',
+                autocomplete: 'off'
+          .field
+            .label.is-normal
+              = form.label :content, 'Add a written review',
+                class: 'label'
+            .control
+              = form.text_area :content,
+                rows: 5,
+                placeholder: 'What did you like or dislike?',
+                class: 'textarea', autocomplete: 'off'
 
-            .field.is-grouped.is-grouped-right
-              .control
-                = form.submit 'Submit review', class: 'button is-primary'
-              .control
-                = link_to 'Cancel', @place, class: 'button is-info'
-            .field.is-grouped.is-grouped-right
-              .control
-                = link_to 'Go back to home', root_path
+          .field.is-grouped.is-grouped-right
+            .control
+              = form.submit 'Submit review', class: 'button is-primary'
+            .control
+              = link_to 'Cancel', @place, class: 'button is-info'
+          .field.is-grouped.is-grouped-right
+            .control
+              = link_to 'Go to home', root_path

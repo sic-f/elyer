@@ -1,7 +1,7 @@
 nav.navbar.is-spaced.is-fixed-top role='navigation' aria-label='main navigation'
   .navbar-brand
     a.navbar-item href='/'
-      h4.title.is-4 Moniquer
+      h4.title.is-4 Tara!
     a.navbar-burger.burger[role='button'
                            aria-label='menu'
                            aria-expanded='false'
@@ -13,7 +13,7 @@ nav.navbar.is-spaced.is-fixed-top role='navigation' aria-label='main navigation'
     .navbar-start
       - if signed_in?
         = link_to 'Account', current_user, class: 'navbar-item account-link'
-        = link_to 'Your Contributions',
+        = link_to 'Your Places',
                   places_user_path(current_user),
                   class: 'navbar-item user-contributions-link'
     .navbar-end

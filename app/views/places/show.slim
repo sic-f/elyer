@@ -1,3 +1,4 @@
+- content_for :title, '📝 Place details'
 - apply_padding = signed_in?
 - if flash[:success].eql? 'Successfully submitted place!'
   .notification.is-primary.has-text-centered
@@ -16,13 +17,15 @@
                     class: 'card-header-icon is-paddingless trash-can-link',
                     'aria-label': 'more-options',
                     method: :delete,
+                    title: '❌ delete place',
                     data: { confirm: "Are you sure you want to delete #{@place.name}?" } do
             span.icon
               i.fas.fa-trash aria-hidden=true
         - if authorized_to?(:edit?, @place)
           = link_to edit_place_path(@place),
                     class: 'card-header-icon edit-place-link',
-                    'aria-label': 'more-options' do
+                    'aria-label': 'more-options', 
+                    title: '📝 edit details of place' do
             span.icon
               i.fas.fa-edit aria-hidden=true
       .card-image
@@ -49,7 +52,7 @@
         - @place.pictures.each do |picture|
           .column.is-one-third
             .box
-              figure.image.is-clickable
+              figure.image
                 = link_to image_path picture do
                   = image_tag picture.image.variant(resize_to_fill: ['400', '400'])
     - else

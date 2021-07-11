@@ -3,7 +3,7 @@ html
   head
     meta name='viewport' content='width=device-width, initial-scale=1'
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title Elyer
+    title = content_for?(:title) ? 'Tara na! - ' + yield(:title) : 'Tara na, aba!'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application',

@@ -25,7 +25,7 @@
         | description
 
   .card-image
-    figure.image.is-clickable
+    figure.image
       = link_to url_for(@image.image), target: '_blank', title: '🏞 Click to view full size' do
         - image_tag @image.image
   .card-content

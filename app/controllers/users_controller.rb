@@ -36,7 +36,7 @@ class UsersController < Clearance::UsersController
   end
 
   def places
-    @places = current_user.places
+    @pagy, @places = pagy(current_user.places)
   end
 
   private

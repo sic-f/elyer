@@ -1,4 +1,8 @@
-h1.title.is-marginless.has-text-primary Submit a place
+h1.title.is-marginless.has-text-primary.is-flex.is-align-items-center
+  = link_to 'javascript:window.history.back()', class: 'is-size-5' do
+    span.icon
+      i.fas.fa-arrow-circle-left
+  |&nbsp&nbspSubmit a place
 section.section
   .container
     = form_with model: [@user, @place], id: :new_place, local: true do |form|

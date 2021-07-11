@@ -5,13 +5,15 @@ article.home-page-item
       - if authorized_to?(:edit?, place)
         = link_to edit_place_path(place),
                   class: 'card-header-icon is-paddingless edit-place-link',
-                  'aria-label': 'more-options' do
+                  'aria-label': 'more-options',
+                  title: '📝 edit details' do
           span.icon
             i.fas.fa-edit aria-hidden=true
       = link_to 'more info',
                 place,
                 class: "card-header-icon has-text-info is-size-7-mobile \
-                        has-text-weight-bold is-paddingless pl-2 pr-4 place-more-details"
+                  has-text-weight-bold is-paddingless pl-2 pr-4 place-more-details",
+                title: 'ℹ more information about the place'
     .card-image
       = link_to place do
         figure.image
