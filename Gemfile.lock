@@ -71,6 +71,7 @@ GEM
     ast (2.4.1)
     backport (1.1.2)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.1.0)
     benchmark (0.1.1)
     bindex (0.8.1)
     binding.repl (3.0.0)
@@ -172,6 +173,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     e2mmap (0.1.0)
+    ed25519 (1.2.4)
     email_validator (2.2.2)
       activemodel
     erubi (1.10.0)
@@ -483,6 +485,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf (>= 1.0, < 2.0)
   bootsnap (>= 1.1.0)
   bulma-rails
   capistrano (~> 3.16)
@@ -493,6 +496,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   dotenv-rails
+  ed25519 (>= 1.2, < 2.0)
   factory_bot_rails
   ffaker
   guard
