@@ -8,7 +8,7 @@ class Places::Presenter
   def reviewer_thumbnail(avatar)
     avatar.attached? ?
       avatar.variant(resize_to_fill: [32, 32]) :
-      url_for('no_image.png')
+      url_for('no_user.png')
   end
 
   def website_link
