@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Authentication
   resources :users, only: %i[show create edit update] do
     get :places, on: :member
+    delete :destroy_avatar, on: :member
     resource :password,
              controller: 'clearance/passwords',
              only: %i[edit update]

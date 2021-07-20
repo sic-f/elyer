@@ -48,9 +48,9 @@ section.section
           p.help.is-danger.user-password= @user.errors.messages[:password].first
 
       .field
-        .file.is-small.has-name
-          label.file-label
-            .control
+        .control
+          .file.is-small.has-name
+            label.file-label
               = form.file_field :avatar, class: 'file-input'
               span.file-cta
                 span.file-icon
@@ -59,7 +59,13 @@ section.section
               = has_avatar? current_user do
                 span.file-name.is-centered
                   = current_user.avatar.filename
-
+      - if @user.avatar.attached?
+        .field
+          = link_to 'Remove avatar', destroy_avatar_user_path(current_user),
+                    class: 'button is-small is-danger',
+                    'aria-label': 'more-options',
+                    method: :delete,
+                    data: { confirm: "Are you sure you want to delete your avatar?" }
       .field
         .control
           .level

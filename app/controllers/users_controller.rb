@@ -2,6 +2,8 @@ class UsersController < Clearance::UsersController
   layout 'application', only: %i[show places]
   layout 'clearance_authentication', only: %i[new create]
 
+  before_action :set_user, only: %i[edit, update, destroy_avatar]
+
   def new
     @user = User.new
   end
@@ -39,21 +41,30 @@ class UsersController < Clearance::UsersController
     @pagy, @places = pagy(current_user.places)
   end
 
+  def destroy_avatar
+    @user.avatar.purge_later
+
+    redirect_to @user
+  end
+
   private
+    def set_user
+      @user = User.find params[:id]
+    end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar)
+    end
 
-  def update_params
-    update_params = user_params
+    def update_params
+      update_params = user_params
 
-    delete_password_if_not_present_in(update_params)
+      delete_password_if_not_present_in(update_params)
 
-    update_params
-  end
+      update_params
+    end
 
-  def delete_password_if_not_present_in(update_params)
-    update_params.delete(:password) if user_params[:password].blank?
-  end
+    def delete_password_if_not_present_in(update_params)
+      update_params.delete(:password) if user_params[:password].blank?
+    end
 end
