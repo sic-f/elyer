@@ -1,5 +1,5 @@
 - if @places.empty?
-  = render 'no_places_yet'
+  .notification.is-brand There are no places yet. 🏝
 - else
   - @places.each do |place| 
     = render place, presenter: Places::Presenter.new(place)

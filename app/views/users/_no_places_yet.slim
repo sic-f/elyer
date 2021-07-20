@@ -1,0 +1,9 @@
+article.message.is-primary
+  .message-header
+      p You have no places yet
+      p 🌻
+  .message-body
+    = link_to "Why not upload a few! 🏝😉🎉",
+      new_user_place_path(current_user),
+      style: 'text-decoration: none;',
+      title: '🚀 Submit a place'
