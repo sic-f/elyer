@@ -18,6 +18,7 @@ nav.navbar.is-spaced.is-fixed-top role='navigation' aria-label='main navigation'
                   class: 'navbar-item user-contributions-link'
     .navbar-end
       - if signed_in?
+        = link_to "Hello, #{current_user.first_name}!", current_user, class: 'navbar-item account-link'
         = link_to new_user_place_path(current_user) do
           .navbar-item.new-place-link
             span.icon.mr-1
