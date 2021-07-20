@@ -1,10 +1,10 @@
 .card.image-show
   header.card-header
     span.card-header-title
-      = link_to place_path(@image.imageable) do
+      = link_to place_path(@image.imageable, anchor: "picture#{@image.to_param}") do
         span.icon
           i.fas.fa-arrow-circle-left
-        span.is-hidden-mobile Back to place
+        span.is-hidden-mobile&nbsp Back to place
     - if image_authorized_to(:destroy?, @image)
       = link_to image_path,
                 class: 'card-header-icon is-paddingless trash-can-link',

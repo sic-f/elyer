@@ -6,9 +6,9 @@ article.media
     .content
       p.comment-content
         strong = full_name_for(comment.user)
-        small.ml-2 = time_ago_in_words Time.now
+        small.ml-2 = time_ago_in_words comment.created_at
         br
-        = comment.content
+        = simple_format comment.content
 
     - if authorized_to_perform_operations_on? comment
       nav.level.is-mobile

@@ -50,7 +50,7 @@
       .subtitle.is-7.has-text-info click images to view comments & description
       .columns.is-multiline.is-vcentered
         - @place.pictures.each do |picture|
-          .column.is-one-third
+          .column.is-one-third id="picture#{picture.to_param}"
             .box
               figure.image
                 = link_to image_path picture do
