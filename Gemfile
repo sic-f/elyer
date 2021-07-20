@@ -10,8 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Use Uglifier as compressor for JavaScript assets
+gem 'sass-rails', '>= 6' # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker'
@@ -41,7 +40,6 @@ gem 'clearance'
 gem 'pagy'
 gem 'pundit'
 gem 'slim-rails'
-
 group :development, :test do
   gem 'coveralls', require: false
   gem 'dotenv-rails'
@@ -57,7 +55,9 @@ group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
   gem 'capistrano', '~> 3.16', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
-  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
   gem 'guard'
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5'
