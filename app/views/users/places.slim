@@ -1,7 +1,7 @@
 h1.title Your Places
 h2.subtitle Places you've submitted
 - if @places.empty?
-  = render 'no_places_yet'
+  = render 'pages/no_places_yet'
 - else
   - @places.each do |place|
     = render place, presenter: Places::Presenter.new(place)

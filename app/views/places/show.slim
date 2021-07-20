@@ -1,4 +1,4 @@
-- content_for :title, '📝 Place details'
+- content_for :title, "#{@place.name} 📝"
 - apply_padding = signed_in?
 - if flash[:success].eql? 'Successfully submitted place!'
   .notification.is-primary.has-text-centered

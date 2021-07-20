@@ -2,18 +2,19 @@ article.home-page-item
   article.card
     header.card-header
       p.card-header-title.has-text-primary.is-unselectable = place.name
+      = link_to 'more info',
+                place,
+                class: "card-header-icon has-text-info is-size-7-mobile \
+                  has-text-weight-bold is-paddingless place-more-details \
+                  #{presenter.more_details_margin(signed_in?)}",
+                title: 'ℹ more information about the place'
       - if authorized_to?(:edit?, place)
         = link_to edit_place_path(place),
-                  class: 'card-header-icon is-paddingless edit-place-link',
+                  class: 'card-header-icon is-paddingless pl-3 pr-3 edit-place-link',
                   'aria-label': 'more-options',
                   title: '📝 edit details' do
           span.icon
             i.fas.fa-edit aria-hidden=true
-      = link_to 'more info',
-                place,
-                class: "card-header-icon has-text-info is-size-7-mobile \
-                  has-text-weight-bold is-paddingless pl-2 pr-4 place-more-details",
-                title: 'ℹ more information about the place'
     .card-image
       = link_to place do
         figure.image
