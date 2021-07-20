@@ -12,7 +12,7 @@ module UsersHelper
   end
 
   def user_avatar(avatar)
-    avatar.attached? ? avatar.variant(resize: '400x300') : url_for('no_image.png')
+    avatar.attached? ? avatar.variant(resize: '1024x768') : url_for('no_image.png')
   end
 
   def user_thumbnail(avatar)

@@ -68,6 +68,5 @@ section.section
     h3.title.is-3.has-text-grey-light Reviews
     = link_to 'Write a traveller review', new_place_review_path(@place)
 
-  section.section
-    .container
+    section.mt-6
       = render @place.reviews, presenter: @presenter

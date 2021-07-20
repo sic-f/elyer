@@ -5,10 +5,26 @@ article.mt-4
         = image_tag presenter.reviewer_thumbnail(review.reviewer_avatar),
           class: 'is-rounded'
       p.card-header-title.has-text-primary.is-unselectable #{review.reviewer_name}
+      - if authorized_to?(:edit?, review)
+        = link_to edit_review_path(review, place_id: review.place),
+          'aria-label': 'more-options',
+          title: '📝 edit review' do
+            span.icon
+              i.fas.fa-pen-square aria-hidden=true
+            span.is-hidden-mobile edit review
+      - if authorized_to?(:destroy?, review)
+        = link_to review_path(review, place_id: review.place),
+                  class: 'card-header-icon trash-can-link',
+                  'aria-label': 'more-options',
+                  method: :delete,
+                  title: '❌ delete',
+                  data: { confirm: "Are you sure you want to delete your review?" } do
+          span.icon
+            i.fas.fa-trash aria-hidden=true
     .card-content
       h2.subtitle = review.headline
       .content = simple_format review.content
       small.is-size-7
-        | Reviewed on 
+        | Reviewed on
         time datetime="#{review.updated_at}"
           = review.updated_at.strftime('%B %d, %Y')

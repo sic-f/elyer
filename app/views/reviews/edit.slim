@@ -1,0 +1,28 @@
+.container
+  h3.title.has-text-centered.is-3.is-size-4-mobile Review this place
+  = form_with model: @review, id: :new_review, class: 'general-form', local: true do |form|
+    = hidden_field_tag :place_id, @place.to_param
+
+    .field
+      .label.is-normal
+        = form.label :headline, 'Add a headline', class: 'label'
+      .control
+        = form.text_field :headline,
+          placeholder: "What's most imporant to know?",
+          class: 'input',
+          autocomplete: 'off'
+    .field
+      .label.is-normal
+        = form.label :content, 'Add a written review',
+          class: 'label'
+      .control
+        = form.text_area :content,
+          rows: 5,
+          placeholder: 'What did you like or dislike?',
+          class: 'textarea', autocomplete: 'off'
+
+    .field.is-grouped.is-grouped-right
+      .control
+        = form.submit 'Submit review', class: 'button is-primary'
+      .control
+        = link_to 'Cancel', @place, class: 'button is-info'

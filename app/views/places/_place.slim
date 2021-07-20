@@ -6,7 +6,7 @@ article.home-page-item
                 place,
                 class: "card-header-icon has-text-info is-size-7-mobile \
                   has-text-weight-bold is-paddingless place-more-details \
-                  #{presenter.more_details_margin(signed_in?)}",
+                  #{presenter.more_details_margin(authorized_to_perform_operations_on?(place))}",
                 title: 'ℹ more information about the place'
       - if authorized_to?(:edit?, place)
         = link_to edit_place_path(place),

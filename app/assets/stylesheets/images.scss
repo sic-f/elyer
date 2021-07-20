@@ -1,17 +1,12 @@
-.general-form {
-  margin: auto;
-  width: 50%;
-}
-
-.edit-image-box {
-  margin: auto;
-  width: 50%;
-}
-
 @media only screen and (min-width: 768px) {
   .image-show {
     margin: auto;
     width: 42vw;
+  }
+
+  .edit-image-box {
+    margin: auto;
+    width: 50%;
   }
 
   .review-new {
