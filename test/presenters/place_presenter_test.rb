@@ -59,4 +59,19 @@ class Places::PresenterTest < ActiveSupport::TestCase
     assert_equal "https://facebook.com/kpineds", presenter.facebook_link
   end
 
+  test '#more_details_margin when not authenticated' do
+    place = build :place
+    presenter = Places::Presenter.new(place)
+    is_signed_in = false
+
+    assert_equal 'pr-4', presenter.more_details_margin(is_signed_in)
+  end
+
+  test '#more_details_margin when authenticated' do
+    place = build :place
+    presenter = Places::Presenter.new(place)
+    is_signed_in = true
+
+    assert_nil presenter.more_details_margin(is_signed_in)
+  end
 end

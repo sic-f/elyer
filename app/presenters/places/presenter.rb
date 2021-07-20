@@ -19,6 +19,10 @@ class Places::Presenter
     site_link(:facebook)
   end
 
+  def more_details_margin(is_signed_in)
+    'pr-4' if !is_signed_in
+  end
+
   private
     attr_reader :place
 
